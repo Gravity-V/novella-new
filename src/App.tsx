@@ -13,8 +13,6 @@ function App() {
         () => {level < questions.length-1 && setLevel(level+1)}
       } 
       callbackCorrect={()=>{}} />
-
-
     </div>
   );
 }

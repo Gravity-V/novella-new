@@ -5,17 +5,13 @@ interface BaseAnswer{
 interface AnswerWithCorrect extends BaseAnswer{
     isCorrect: boolean
 }
-
 export interface QuestionBase{
-    type: string
-    
+    type: string 
 }
 export interface QuestionBaseExtend extends QuestionBase{
     background: string
     text: string
 }
-
-
 export interface QuestionStandart extends QuestionBaseExtend{
     type: 'standart'
     answers: AnswerWithCorrect[]
@@ -35,9 +31,7 @@ export interface QuestionOrder extends QuestionBaseExtend{
     answers: BaseAnswer[]
     order: number[]
 }
-
 export interface QuestionHierarchy extends QuestionBase{
     type: 'hierarchy'
     questions: QuestionBase[]
-
 }

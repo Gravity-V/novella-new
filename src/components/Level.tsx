@@ -21,12 +21,12 @@ export function LevelWalk(props: LevelWalkProps)
                     (answer) => <Button
                     onClick={() => {
                                 props.callbackFinish([answer.text])
-                                props.callbackCorrect(answer.isCorrect)//препятствует вызову последующих функций     
+                                props.callbackCorrect(answer.isCorrect)
                             }
                         }
                     >{answer.text}</Button>
                 )}
-            </>           
+            </>
         // case 'multi':
         //     const questionMulti = props.question as QuestionMulti;
         //     let answ: number[] | null[] = [null,null,null,null];
