@@ -1,36 +1,50 @@
 import React from 'react';
-import { Button } from "@mui/material"
-import { QuestionBase, QuestionStandart } from "../novella/novellaInterrface";
+import { Button, TextField } from "@mui/material"
+import { QuestionBase, QuestionStandart, QuestionName, QuestionSex, QuestionHierarchy, QuestionOrder } from "../novella/novellaInterrface";
+import { Standart } from './Questions/Standart';
+import { Sex } from './Questions/Sex';
+import { Name } from './Questions/Name';
+import { Hierarchy } from './Questions/Hierarchy';
+import { Order } from './Questions/Order';
 
 
-interface LevelWalkProps{
+interface LevelWalkProps {
     question: QuestionBase
     callbackFinish: (userAnswers: string[]) => void
     callbackCorrect: (isCorrect: boolean) => void
 }
 
-export function LevelWalk(props: LevelWalkProps)
-{   
+export function LevelWalk(props: LevelWalkProps) {
     switch (props.question.type) {
+        case 'name':
+            return <Name
+                question={props.question as QuestionName}
+                callbackFinish={props.callbackFinish} />
+        case 'sex':
+            return <Sex
+                question={props.question as QuestionSex}
+                callbackFinish={props.callbackFinish} />
         case 'standart':
-            const questionStandart = props.question as QuestionStandart;   
-            return <>
-                <p>{questionStandart.text}</p>
-                <img src={questionStandart.background}/>
-                {questionStandart.answers.map(
-                    (answer) => <Button
-                    onClick={() => {
-                                props.callbackFinish([answer.text])
-                                props.callbackCorrect(answer.isCorrect)
-                            }
-                        }
-                    >{answer.text}</Button>
-                )}
-            </>
+            return <Standart
+                callbackCorrect={props.callbackCorrect}
+                callbackFinish={props.callbackFinish}
+                question={props.question as QuestionStandart} />
+        case 'hierarchy':
+            return <Hierarchy
+                callbackCorrect={props.callbackCorrect}
+                callbackFinish={props.callbackFinish}
+                question={props.question as QuestionHierarchy} />
+        case 'order':
+            return <Order
+                callbackCorrect={props.callbackCorrect}
+                callbackFinish={() => { }}
+                question={props.question as QuestionOrder} />
+
+
         // case 'multi':
         //     const questionMulti = props.question as QuestionMulti;
         //     let answ: number[] | null[] = [null,null,null,null];
-            
+
         //     const handleChange = (value: number, index: number) => {
         //         let type=false;
         //         // if (answ.some(a => a === value)) return//если элемент уже вписан
@@ -68,39 +82,7 @@ export function LevelWalk(props: LevelWalkProps)
         //             </FormControl>
         //         )}
         //     </>
-        // case 'name':
-        //     const questionName = props.question as QuestionName;
-        //     let name = ''
-
-        //     return <>
-        //         <p>{questionName.text}</p>
-        //         <img src={questionName.background}/>
-        //         <TextField id="standard-basic" label="Standard" variant="standard" aria-placeholder="Имя" onChange={(textField)=> name = textField.target.value} />
-        //         <ButtonAnswer disabled={props.disabled} 
-        //             callbackFinish={() => {
-        //             props.callbackFinish([name]) 
-        //         }}>Подтверрждаю</ButtonAnswer>
-        //     </>
-        // case 'sex':
-        //     const questionSex = props.question as QuestionSex;
-        //     return <>
-        //     <p>{questionSex.text}</p>
-        //         <img src={questionSex.background}/>
-        //         {questionSex.answers.map(
-        //             (answer, i) => <ButtonAnswer disabled={props.disabled}
-        //             callbackFinish={() => {
-                                
-        //                       props.callbackSex(i)
-
-        //                         props.callbackFinish([answer.text])               
-        //                     }
-        //                 }
-                    
-        //             ><img src={answer.text}/></ButtonAnswer>
-        //             )}
-        //     </>
         default:
             return <></>
     }
 }
-    
