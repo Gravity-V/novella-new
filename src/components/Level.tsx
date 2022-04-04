@@ -8,10 +8,20 @@ import { Hierarchy } from './Questions/Hierarchy';
 import { Order } from './Questions/Order';
 
 
+export interface Answer {
+    type: 'name' | 'sex' | 'standart' | 'order' | 'multi' | 'hierarchy'
+    usewAnswers: string[]
+    isCorrect: boolean
+}
+export interface AnswerHierarchy extends Answer {
+    subQuestion: number
+}
+export interface AnswerOrder extends Answer {
+    order: number[]
+}
 interface LevelWalkProps {
     question: QuestionBase
-    callbackFinish: (userAnswers: string[]) => void
-    callbackCorrect: (isCorrect: boolean) => void
+    callbackFinish: (answer: Answer) => void
 }
 
 export function LevelWalk(props: LevelWalkProps) {
@@ -26,17 +36,14 @@ export function LevelWalk(props: LevelWalkProps) {
                 callbackFinish={props.callbackFinish} />
         case 'standart':
             return <Standart
-                callbackCorrect={props.callbackCorrect}
                 callbackFinish={props.callbackFinish}
                 question={props.question as QuestionStandart} />
         case 'hierarchy':
             return <Hierarchy
-                callbackCorrect={props.callbackCorrect}
                 callbackFinish={props.callbackFinish}
                 question={props.question as QuestionHierarchy} />
         case 'order':
             return <Order
-                callbackCorrect={props.callbackCorrect}
                 callbackFinish={() => { }}
                 question={props.question as QuestionOrder} />
 

@@ -1,11 +1,11 @@
 import { Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import React, { useState } from 'react';
 import { QuestionOrder } from '../../novella/novellaInterrface';
+import { AnswerOrder } from '../Level';
 
 interface OrderProps {
     question: QuestionOrder
-    callbackCorrect: (isCorrect: boolean) => void
-    callbackFinish: (order: number[]) => void
+    callbackFinish: (answer: AnswerOrder) => void
 }
 
 export function Order(props: OrderProps) {
@@ -13,7 +13,6 @@ export function Order(props: OrderProps) {
     const handleChange = () => {
 
     }
-
     return <>
         <p>{props.question.text}</p>
         <img src={props.question.background} />

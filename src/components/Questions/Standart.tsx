@@ -1,11 +1,11 @@
 import { Button } from "@mui/material"
 import { QuestionStandart } from "../../novella/novellaInterrface"
 import React from 'react';
+import { Answer } from "../Level";
 
 interface StandartProps {
     question: QuestionStandart
-    callbackFinish: (userAnswers: string[]) => void
-    callbackCorrect: (isCorrect: boolean) => void
+    callbackFinish: (answer: Answer) => void
 }
 
 export function Standart(props: StandartProps) {
@@ -15,8 +15,7 @@ export function Standart(props: StandartProps) {
         {props.question.answers.map(
             (answer) => <Button
                 onClick={() => {
-                    props.callbackFinish([answer.text])
-                    props.callbackCorrect(answer.isCorrect)
+                    props.callbackFinish({ isCorrect: answer.isCorrect, type: "standart", usewAnswers: [answer.text] })
                 }
                 }
             >{answer.text}</Button>

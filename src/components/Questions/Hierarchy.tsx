@@ -1,36 +1,25 @@
 import { useState } from "react";
 import { QuestionHierarchy } from "../../novella/novellaInterrface"
-import { LevelWalk } from "../Level";
+import { Answer, AnswerHierarchy, LevelWalk } from "../Level";
 import React from 'react';
 
 interface HierarchyProps {
     question: QuestionHierarchy
-    callbackFinish: (userAnswers: string[]) => void
-    callbackCorrect: (isCorrect: boolean) => void
+    callbackFinish: (answer: AnswerHierarchy) => void
 }
 
 export function Hierarchy(props: HierarchyProps) {
     const [subquestion, setSubquestion] = useState(0);
     return <LevelWalk
         question={props.question.questions[subquestion]}
-        callbackCorrect={
-            (isCorrect) => {
-                if (subquestion >= props.question.questions.length - 1) {
-                    props.callbackCorrect(isCorrect)
-                }
-                else if (!isCorrect) {
-                    props.callbackCorrect(true)
-                    props.callbackFinish([])
-                }
-            }
-        }
         callbackFinish={
-            (userAnswers) => {
+            (answer) => {
                 if (subquestion < props.question.questions.length - 1) {
-                    setSubquestion(subquestion + 1)
+                    answer.isCorrect && setSubquestion(subquestion + 1)
+                    !(answer.isCorrect) && props.callbackFinish({ type: 'hierarchy', isCorrect: true, usewAnswers: answer.usewAnswers, subQuestion: subquestion })
                 }
                 else {
-                    props.callbackFinish(userAnswers)
+                    props.callbackFinish({ type: 'hierarchy', isCorrect: answer.isCorrect, usewAnswers: answer.usewAnswers, subQuestion: subquestion })
                 }
             }
         }

@@ -2,23 +2,37 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import questions from './novella/questions.json'
-import { LevelWalk } from './components/Level'
+import { Answer, LevelWalk } from './components/Level'
+import { ButtonLevel } from './components/button-level/button'
+
+
 
 function App() {
   const [level, setLevel] = useState(0)
+  const [answers, setAnswers] = useState<Answer[]>([]);
+
+
   return (
     <div className="App">
 
       <div className='top'>
-
+        <ButtonLevel answers={answers} totalLevel={questions.length}
+          callbackShowLevel={(level) => {
+            setLevel(level)
+          }}
+        />
       </div>
 
       <div className='box'>
         <LevelWalk question={questions[level]}
           callbackFinish={
-            () => { level < questions.length - 1 && setLevel(level + 1) }
+            (answer) => {
+              setAnswers((old) => [...old, answer])
+              level < questions.length - 1 && setLevel(level + 1)
+
+            }
           }
-          callbackCorrect={() => { }} />
+        />
       </div>
 
     </div>
