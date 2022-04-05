@@ -8,8 +8,6 @@ import { Hierarchy } from './Questions/Hierarchy';
 import { Order } from './Questions/Order';
 import { Answer, AnswerName } from './AnswerType';
 
-
-
 interface LevelWalkProps {
     question: QuestionBase
     callbackFinish: (answer: Answer) => void
@@ -46,7 +44,7 @@ export function LevelWalk(props: LevelWalkProps) {
     }
 }
 
-export function LevelShow(props: LevelShowProps) {
+export function Level(Showprops: LevelShowProps) {
     switch (props.question.type) {
         case 'name':
             return <Name show={true} question={props.question as QuestionName} answer={props.answer as AnswerName} />
