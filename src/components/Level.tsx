@@ -1,39 +1,49 @@
 import React from 'react';
-import { Button, TextField } from "@mui/material"
 import { QuestionBase, QuestionStandart, QuestionName, QuestionSex, QuestionHierarchy, QuestionOrder } from "../novella/novellaInterrface";
 import { Standart } from './Questions/Standart';
 import { Sex } from './Questions/Sex';
 import { Name } from './Questions/Name';
 import { Hierarchy } from './Questions/Hierarchy';
 import { Order } from './Questions/Order';
-import { Answer, AnswerName } from './AnswerType';
+import { Answer, AnswerName, AnswerStandart } from './AnswerType';
 
-interface LevelWalkProps {
+interface LevelProps {
     question: QuestionBase
-    callbackFinish: (answer: Answer) => void
-}
-interface LevelShowProps {
-    question: QuestionBase
-    answer: Answer
+    callbackFinish?: (answer: Answer) => void
+    show: boolean
+    answer?: Answer
 }
 
-export function LevelWalk(props: LevelWalkProps) {
+export function Level(props: LevelProps) {
     switch (props.question.type) {
         case 'name':
-            return <Name
-                question={props.question as QuestionName}
-                callbackFinish={props.callbackFinish} />
+            if (props.show) {
+                return <Name show={true} question={props.question as QuestionName} answer={props.answer as AnswerName} />
+            }
+            else {
+                return < Name
+                    question={props.question as QuestionName}
+                    callbackFinish={props.callbackFinish} />
+            }
+
+
         case 'sex':
             return <Sex
                 question={props.question as QuestionSex}
                 callbackFinish={props.callbackFinish} />
         case 'standart':
-            return <Standart
-                callbackFinish={props.callbackFinish}
-                question={props.question as QuestionStandart} />
+            if (props.show) {
+                return <Standart question={props.question as QuestionStandart} answer={props.answer as AnswerStandart} show={true} />
+            }
+            else {
+                return <Standart
+                    callbackFinish={props.callbackFinish}
+                    question={props.question as QuestionStandart} />
+            }
+
         case 'hierarchy':
             return <Hierarchy
-                callbackFinish={props.callbackFinish}
+                callbackFinish={() => { }}
                 question={props.question as QuestionHierarchy} />
         case 'order':
             return <Order
@@ -44,19 +54,4 @@ export function LevelWalk(props: LevelWalkProps) {
     }
 }
 
-export function LevelShow(props: LevelShowProps) {
-    switch (props.question.type) {
-        case 'name':
-            return <Name show={true} question={props.question as QuestionName} answer={props.answer as AnswerName} />
-        case 'sex':
-            return <></>
-        case 'standart':
-            return <></>
-        case 'hierarchy':
-            return <></>
-        case 'order':
-            return <></>
-        default:
-            return <></>
-    }
-}
+
