@@ -44,7 +44,7 @@ export function LevelWalk(props: LevelWalkProps) {
     }
 }
 
-export function Level(Showprops: LevelShowProps) {
+export function LevelShow(props: LevelShowProps) {
     switch (props.question.type) {
         case 'name':
             return <Name show={true} question={props.question as QuestionName} answer={props.answer as AnswerName} />
