@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import questions from './novella/questions.json'
-import { LevelShow, LevelWalk } from './components/Level'
+import { Level } from './components/Level'
 import { ButtonLevel } from './components/button-level/button'
 import { Answer } from './components/AnswerType';
 
@@ -21,17 +21,17 @@ function App() {
       </div>
 
       <div className='box'>
-        {answers[level] && <LevelShow answer={answers[level]} question={questions[level]} />}
+        {answers[level] && <Level answer={answers[level]} question={questions[level]} show={true} />}
         {
-          !answers[level] && <LevelWalk question={questions[level]}
+          !answers[level] && <Level question={questions[level]}
             callbackFinish={
               (answer) => {
                 setAnswers((old) => [...old, answer])
 
                 level < questions.length - 1 && setLevel(level + 1)
-
               }
             }
+            show={false}
           />
         }
       </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { QuestionHierarchy } from "../../novella/novellaInterrface"
-import { LevelWalk } from "../Level";
+import { Level } from "../Level";
 import React from 'react';
 import { AnswerHierarchy } from "../AnswerType";
 
@@ -11,7 +11,8 @@ interface HierarchyProps {
 
 export function Hierarchy(props: HierarchyProps) {
     const [subquestion, setSubquestion] = useState(0);
-    return <LevelWalk
+    return <Level
+        show={false}
         question={props.question.questions[subquestion]}
         callbackFinish={
             (answer) => {
