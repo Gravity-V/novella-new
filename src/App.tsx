@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import questions from './novella/questions.json'
 import { Level } from './components/Level'

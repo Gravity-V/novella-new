@@ -25,8 +25,6 @@ export function Level(props: LevelProps) {
                     question={props.question as QuestionName}
                     callbackFinish={props.callbackFinish} />
             }
-
-
         case 'sex':
             return <Sex
                 question={props.question as QuestionSex}
@@ -40,7 +38,6 @@ export function Level(props: LevelProps) {
                     callbackFinish={props.callbackFinish}
                     question={props.question as QuestionStandart} />
             }
-
         case 'hierarchy':
             return <Hierarchy
                 callbackFinish={() => { }}
@@ -53,5 +50,3 @@ export function Level(props: LevelProps) {
             return <></>
     }
 }
-
-
