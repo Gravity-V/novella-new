@@ -1,7 +1,7 @@
 import { Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import React, { useState } from 'react';
 import { QuestionOrder } from '../../novella/novellaInterrface';
-import { AnswerOrder } from '../Level';
+import { AnswerOrder } from '../AnswerType';
 
 interface OrderProps {
     question: QuestionOrder
@@ -19,12 +19,12 @@ export function Order(props: OrderProps) {
         {
             props.question.answers.map(
                 (_, i) => {
-                    return <FormControl>
+                    return <FormControl key={i}>
                         <InputLabel>{i + 1}</InputLabel>
                         <Select /*id={i.toString()} onChange={() => }*/>
                             {props.question.answers.map(
                                 (answer, i) => {
-                                    return <MenuItem value={i}>{answer.text}</MenuItem>
+                                    return <MenuItem value={i} key={i}>{answer.text}</MenuItem>
                                 }
                             )}
                         </Select>

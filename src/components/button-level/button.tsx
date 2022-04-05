@@ -23,11 +23,9 @@ export function ButtonLevel(props: ButtonLevelProps) {
 
           const color = props.answers[i] ? (props.answers[i].isCorrect ? 'success' : 'error') : 'primary';
 
-
           return <Button onClick={() => { props.callbackShowLevel(i) }} key={i} color={color} disabled={disable}>{i + 1}</Button>
         }
       )
     }
-
   </ButtonGroup >
 }
