@@ -6,22 +6,17 @@ import { Sex } from './Questions/Sex';
 import { Name } from './Questions/Name';
 import { Hierarchy } from './Questions/Hierarchy';
 import { Order } from './Questions/Order';
+import { Answer, AnswerName } from './AnswerType';
 
 
-export interface Answer {
-    type: 'name' | 'sex' | 'standart' | 'order' | 'multi' | 'hierarchy'
-    usewAnswers: string[]
-    isCorrect: boolean
-}
-export interface AnswerHierarchy extends Answer {
-    subQuestion: number
-}
-export interface AnswerOrder extends Answer {
-    order: number[]
-}
+
 interface LevelWalkProps {
     question: QuestionBase
     callbackFinish: (answer: Answer) => void
+}
+interface LevelShowProps {
+    question: QuestionBase
+    answer: Answer
 }
 
 export function LevelWalk(props: LevelWalkProps) {
@@ -46,49 +41,23 @@ export function LevelWalk(props: LevelWalkProps) {
             return <Order
                 callbackFinish={() => { }}
                 question={props.question as QuestionOrder} />
+        default:
+            return <></>
+    }
+}
 
-
-        // case 'multi':
-        //     const questionMulti = props.question as QuestionMulti;
-        //     let answ: number[] | null[] = [null,null,null,null];
-
-        //     const handleChange = (value: number, index: number) => {
-        //         let type=false;
-        //         // if (answ.some(a => a === value)) return//если элемент уже вписан
-        //         // else {
-        //         answ[index] = value
-        //         console.log(answ)
-        //         for (let index = 1; index <= answ.length; index++) {
-        //           if(typeof(answ[index])=='object'){break}
-        //           else if(index===answ.length){
-        //               //if(JSON.stringify(answ)==JSON.stringify(questionMulti.correctAnswers))
-        //                 return<>
-        //                     {props.callbackFinish(["multi"]) }
-        //                     {props.callbackCorrect(JSON.stringify(answ)==JSON.stringify(questionMulti.correctAnswers))}
-        //                </>
-        //           }
-        //         }
-        //        // }//проверь что получены все ответы, разлоч кнопку далее(еще одно состояние в App), верни true false
-        //     }
-
-        //     return <>
-
-        //         <p>{questionMulti.text}</p>
-        //         <img src={questionMulti.background}/>
-        //         {questionMulti.answers.map(
-        //             (answer, i) =>
-        //             <FormControl disabled={props.disabled}>
-        //                 <InputLabel>{i+1}</InputLabel>
-        //                 <Select onChange={(e) => handleChange(e.target.value as number, i)}
-        //             >
-        //                 {questionMulti.answers.map(
-        //             (answer, index) =>
-        //                 <MenuItem value={index}>{answer.text}</MenuItem>
-        //                 )}
-        //                 </Select>
-        //             </FormControl>
-        //         )}
-        //     </>
+export function LevelShow(props: LevelShowProps) {
+    switch (props.question.type) {
+        case 'name':
+            return <Name show={true} question={props.question as QuestionName} answer={props.answer as AnswerName} />
+        case 'sex':
+            return <></>
+        case 'standart':
+            return <></>
+        case 'hierarchy':
+            return <></>
+        case 'order':
+            return <></>
         default:
             return <></>
     }
