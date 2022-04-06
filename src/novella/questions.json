@@ -2,17 +2,17 @@
     {
         "type":"sex",
         "text": "Пол?",
-        "background": "./components/images/photo_2022-03-25_16-22-34.jpg"  
+        "background": "/logo192.png"  
     },
     {
         "type":"name",
         "text":"Как вас зовут?",
-        "background": "./components/images/background.jpg"
+        "background": "/logo192.png"
     },
     {
         "type":"standart",
         "text":"Когда вы последний раз ставили для себя цель, которую так и не смогли выполнить? Выберите близкий к вашиму ответ",
-        "background": "./components/images/background.jpg",
+        "background": "/logo192.png",
         "answers": [
             {
                 "text":"Мне следовало лучше спланировать свои действия",

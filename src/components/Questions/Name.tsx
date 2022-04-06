@@ -15,7 +15,7 @@ export function Name(props: NameProps) {
 
     return <>
         <p>{props.question.text}</p>
-        <img src={props.question.background} />
+        {/* <img src={props.question.background} /> */}
         <TextField
             id="standard-basic"
             label="Standard"
