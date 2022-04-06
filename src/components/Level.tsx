@@ -6,7 +6,7 @@ import { Name } from './Questions/Name';
 import { Hierarchy } from './Questions/Hierarchy';
 import { Order } from './Questions/Order';
 import { Multi } from './Questions/Multi'
-import { Answer, AnswerHierarchy, AnswerName, AnswerSex, AnswerStandart, AnswerMulti } from './AnswerType';
+import { Answer, AnswerHierarchy, AnswerName, AnswerSex, AnswerStandart, AnswerMulti, AnswerOrder } from './AnswerType';
 
 interface LevelProps {
     question: QuestionBase
@@ -44,19 +44,31 @@ export function Level(props: LevelProps) {
                     callbackFinish={props.callbackFinish}
                     question={props.question as QuestionStandart} />
             }
-        case 'hierarchy':/** */
+        case 'hierarchy':
             if (props.show) {
-                return <Hierarchy callbackFinish={props.callbackFinish} question={props.question as QuestionHierarchy} />
+                return <Hierarchy question={props.question as QuestionHierarchy} answer={props.answer as AnswerHierarchy} show={true} />
             }
             else {
                 return <Hierarchy callbackFinish={props.callbackFinish} question={props.question as QuestionHierarchy} />
             }
         case 'order':/** */
-            return <Order
-                callbackFinish={props.callbackFinish}
-                question={props.question as QuestionOrder} />
-        case 'multi':
-            return <Multi callbackFinish={props.callbackFinish} question={props.question as QuestionMulti} />
+            if (props.show) {
+                return <Order
+                    question={props.question as QuestionOrder}
+                    answer={props.answer as AnswerOrder} show={true} />
+            }
+            else {
+                return <Order
+                    callbackFinish={props.callbackFinish}
+                    question={props.question as QuestionOrder} />
+            }
+        case 'multi':/** */
+            if (props.show) {
+                return <Multi question={props.question as QuestionMulti} answer={props.answer as AnswerMulti} show={true} />
+            }
+            else {
+                return <Multi callbackFinish={props.callbackFinish} question={props.question as QuestionMulti} />
+            }
         default:
             return <></>
     }

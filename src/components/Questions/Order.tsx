@@ -6,6 +6,8 @@ import { AnswerOrder } from '../AnswerType';
 interface OrderProps {
     question: QuestionOrder
     callbackFinish?: (answer: AnswerOrder) => void
+    answer?: AnswerOrder
+    show?: boolean
 }
 
 export function Order(props: OrderProps) {
@@ -19,7 +21,10 @@ export function Order(props: OrderProps) {
         {
             props.question.answers.map(
                 (_, i) => {
-                    return <FormControl key={i}>
+                    return <FormControl key={i}
+                        disabled={
+                            props.show === undefined || props.show === false ? false : props.show
+                        }>
                         <InputLabel>{i + 1}</InputLabel>
                         <Select id={i.toString()} onChange={() => handleChange()}>
                             {props.question.answers.map(

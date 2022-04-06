@@ -418,7 +418,7 @@
         ]
     },
     {
-        "type":"???",
+        "type":"multi",
         "background":"./components/images/background.jpg",
         "text": "Типичные ошибки кандидатов",
         "answers": [
