@@ -12,7 +12,7 @@ interface MultiProps {
 }
 
 export function Multi(props: MultiProps) {
-    const [comment, setComment] = useState<string[]>([''])
+    const [comment, setComment] = useState<string[]>([])
     const [answer, setAnswer] = useState<AnswerMulti>()
     const [lock, setLock] = useState(true)
     let correct: boolean[] = new Array(props.question.answers.length).fill(false)
@@ -39,16 +39,38 @@ export function Multi(props: MultiProps) {
                 }
             )}
         </FormGroup>
-        {(answer || props.show) && <Typography>{comment}</Typography>}
-        <Button
-            disabled={
-                props.show === undefined || props.show === false ? lock : props.show
-            }
-            onClick={() => {
-
-                props.callbackFinish && props.callbackFinish({ isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: ['1'] })
-            }}
-        >Подтверрждаю</Button>
-
+        {(answer || props.show) && comment.map((com) => <Typography>{com}</Typography>)}
+        {
+            answer === undefined && <Button
+                disabled={
+                    props.show === undefined || props.show === false ? lock : props.show
+                }
+                onClick={() => {
+                    let userAnswers: string[] = [];
+                    let comments: string[] = [];
+                    props.question.answers.map(
+                        (answer, i) => {
+                            check[i] && userAnswers.push(answer.text)
+                            check[i] && answer.comment !== undefined && comments.push(answer.comment)
+                        }
+                    )
+                    setComment((old) => [...old, ...comments])
+                    setAnswer(
+                        { isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: userAnswers }
+                    )
+                }}
+            >Подтверрждаю</Button>
+        }
+        {
+            answer && <Button
+                onClick={
+                    () => {
+                        props.callbackFinish && props.callbackFinish(answer)
+                    }
+                }
+            >
+                Далее
+            </Button>
+        }
     </>
 }
