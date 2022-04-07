@@ -1,4 +1,4 @@
-import { Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import React, { useState } from 'react';
 import { QuestionOrder } from '../../novella/novellaInterrface';
 import { AnswerOrder } from '../AnswerType';
@@ -12,8 +12,10 @@ interface OrderProps {
 
 export function Order(props: OrderProps) {
     const [lock, setLock] = useState(true)
-    const handleChange = () => {
+    const question: number[] | null[] = new Array(props.question.answers.length).fill(null)
+    const handleChange = (value: number, i: number) => {
         setLock(false)
+        question[i] = value
     }
     return <>
         <p>{props.question.text}</p>
@@ -26,7 +28,7 @@ export function Order(props: OrderProps) {
                             props.show === undefined || props.show === false ? false : props.show
                         }>
                         <InputLabel>{i + 1}</InputLabel>
-                        <Select id={i.toString()} onChange={() => handleChange()}>
+                        <Select id={i.toString()} onChange={(e) => handleChange(e.target.value as number, i)} value={props.answer && props.answer.order[i]} >
                             {props.question.answers.map(
                                 (answer, i) => {
                                     return <MenuItem value={i} key={i}>{answer.text}</MenuItem>
@@ -37,6 +39,6 @@ export function Order(props: OrderProps) {
                 }
             )
         }
-        <Button onClick={() => props.callbackFinish && props.callbackFinish({ type: 'order', isCorrect: true, order: [1] })} disabled={lock}>Подтверрждаю</Button>
+        <Button onClick={() => props.callbackFinish && props.callbackFinish({ type: 'order', isCorrect: true, order: question as number[] })} disabled={lock}>Подтверрждаю</Button>
     </>
 }
