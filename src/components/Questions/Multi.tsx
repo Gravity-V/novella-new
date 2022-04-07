@@ -23,16 +23,16 @@ export function Multi(props: MultiProps) {
             {props.question.answers.map(
                 (answer, i) => {
                     return <> <FormControlLabel
-                        disabled={
-                            props.show === undefined || props.show === false ? false : props.show
-                        }
+                        disabled={props.show === undefined || props.show === false ? false : props.show}
+                        // defaultChecked={props.answer?.userAnswers === undefined || props.answer.userAnswers === true}
                         key={answer.text}
                         control={<Checkbox />}
                         onChange={() => {
                             setCheck((old) => { old[i] = !old[i]; return old });
                             console.log(check)
                             setLock(false)
-                        }} label={answer.text}
+                        }}
+                        label={answer.text}
                     />
                         {correct[i] = answer.isCorrect}
                     </>
