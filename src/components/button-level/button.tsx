@@ -15,7 +15,7 @@ export function ButtonLevel(props: ButtonLevelProps) {
     const length = end - start;
     return Array.from({ length }, (_, i) => start + i);
   }
-  return <ButtonGroup variant="contained"  >
+  return <ButtonGroup variant="contained" sx={buttonStyles.button}>
     {
       range(0, props.totalLevel).map(
         (i) => {

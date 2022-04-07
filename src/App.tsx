@@ -4,6 +4,7 @@ import questions from './novella/questions.json'
 import { Level } from './components/Level'
 import { ButtonLevel } from './components/button-level/button'
 import { Answer } from './components/AnswerType';
+
 // подтягивает стили из style без импорта
 function App() {
   const [level, setLevel] = useState(0)
@@ -18,7 +19,6 @@ function App() {
           }}
         />
       </div>
-
 
       {answers[level] && <Level answer={answers[level]} question={questions[level]} show={true} />}
       {

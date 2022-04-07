@@ -1,7 +1,7 @@
 .App {
   display: flex;
   flex-direction: column;
-margin: 0px;
+  margin: 0px;
   width: 100vw;
   height: 100vh;
 }
@@ -36,6 +36,7 @@ margin: 0px;
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
