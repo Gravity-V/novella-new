@@ -52,6 +52,8 @@ export function Level(props: LevelProps) {
                 return <Hierarchy callbackFinish={props.callbackFinish} question={props.question as QuestionHierarchy} />
             }
         case 'order':/** */
+
+
             if (props.show) {
                 return <Order
                     question={props.question as QuestionOrder}
