@@ -17,7 +17,6 @@ export function Standart(props: StandartProps) {
     const [lock, setLock] = useState<boolean>(false)
     return <>
         <div className="box" style={{ backgroundImage: `url(${props.question.background})` }}>
-
             <div className="answer">
                 {/* <img src={props.question.background} /> */}
                 {props.question.answers.map(
