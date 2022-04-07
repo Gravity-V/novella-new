@@ -11,24 +11,25 @@ interface OrderProps {
 }
 
 export function Order(props: OrderProps) {
-    const [lock, setLock] = useState(true)
-    const question: number[] | null[] = new Array(props.question.answers.length).fill(null)
+    // const question: number[] | null[] = new Array(props.question.answers.length).fill(null) // начальная строчка
+    const [question, setQuestion] = useState<number[]>(new Array(props.question.answers.length).fill(-1))
     const handleChange = (value: number, i: number) => {
-        setLock(false)
-        question[i] = value
+        const newQuestion = [...question]
+        newQuestion[i] = value
+        setQuestion(newQuestion)
     }
     return <>
         <p>{props.question.text}</p>
-        {/* <img src={props.question.background} /> */}
+        {<img src={props.question.background} />}
         {
             props.question.answers.map(
                 (_, i) => {
                     return <FormControl key={i}
-                        disabled={
-                            props.show === undefined || props.show === false ? false : props.show
-                        }>
+                        disabled={props.show === undefined || props.show === false ? false : props.show}>
                         <InputLabel>{i + 1}</InputLabel>
-                        <Select id={i.toString()} onChange={(e) => handleChange(e.target.value as number, i)} value={props.answer && props.answer.order[i]} >
+                        <Select id={i.toString()} onChange={(e) =>
+                            handleChange(e.target.value as number, i)}
+                            value={props.answer && props.answer.order[i]} >
                             {props.question.answers.map(
                                 (answer, i) => {
                                     return <MenuItem value={i} key={i}>{answer.text}</MenuItem>
@@ -39,6 +40,12 @@ export function Order(props: OrderProps) {
                 }
             )
         }
-        <Button onClick={() => props.callbackFinish && props.callbackFinish({ type: 'order', isCorrect: true, order: question as number[] })} disabled={lock}>Подтверрждаю</Button>
+        <Button onClick={() =>
+            props.callbackFinish && props.callbackFinish({
+                type: 'order',
+                isCorrect: JSON.stringify(question) == JSON.stringify(props.question.order),
+                order: question as number[]
+            })} disabled={question.includes(-1)}
+        >Подтверрждаю</Button>
     </>
 }
