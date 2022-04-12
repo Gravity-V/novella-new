@@ -69,6 +69,12 @@ export function Level(props: LevelProps) {
             else {
                 return <Multi callbackFinish={props.callbackFinish} question={props.question as QuestionMulti} />
             }
+        case 'finish':
+            return <>
+                <div>
+                    Поздравляем! ВЫ дебил
+                </div>
+            </>
         default:
             return <></>
     }

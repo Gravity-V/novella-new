@@ -22,11 +22,11 @@ export function Multi(props: MultiProps) {
         <FormGroup>
             {props.question.answers.map(
                 (answer, i) => {
-                    return <> <FormControlLabel
+                    return <>  <FormControlLabel
                         disabled={props.show === undefined || props.show === false ? false : props.show}
-                        // defaultChecked={props.answer?.userAnswers === undefined || props.answer.userAnswers === true}
+
                         key={answer.text}
-                        control={<Checkbox />}
+                        control={<Checkbox defaultChecked={props.answer != undefined && props.answer.userAnswers.includes(answer.text)} />}
                         onChange={() => {
                             setCheck((old) => { old[i] = !old[i]; return old });
                             console.log(check)

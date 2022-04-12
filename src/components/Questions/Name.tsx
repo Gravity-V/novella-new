@@ -24,10 +24,12 @@ export function Name(props: NameProps) {
             value={props.answer && props.answer.name}
             onChange={(textField) => name = textField.target.value}
             disabled={props.show}
+            onKeyDown={(e) => { name != '' && e.code == "Enter" && props.callbackFinish && props.callbackFinish({ type: 'name', isCorrect: true, name: name }) }}
+
         />
-        <Button
+        {/* <Button
             onClick={() => props.callbackFinish && props.callbackFinish({ type: 'name', isCorrect: true, name: name })}
             disabled={props.show}
-        >Подтверрждаю</Button>
+        >Подтверрждаю</Button> */}
     </>
 }
