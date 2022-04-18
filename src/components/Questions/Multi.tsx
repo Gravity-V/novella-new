@@ -62,10 +62,16 @@ export function Multi(props: MultiProps) {
         }
         {
             answer && <Button
-                onClick={() => {
-                    props.callbackFinish && props.callbackFinish(answer)
-                }}
-            >Далее</Button>
+                onClick={
+                    () => {
+                        setAnswer(undefined)
+                        setLock(true)
+                        props.callbackFinish && props.callbackFinish(answer)
+                    }
+                }
+            >
+                Далее
+            </Button>
         }
         <div>
             {(answer || props.show) && comment.map((com) => <Typography>{com}</Typography>)}

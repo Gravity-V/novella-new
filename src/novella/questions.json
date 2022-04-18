@@ -544,8 +544,5 @@
                 "isCorrect":false
             }   
         ]
-    },
-    {
-        "type":"finish"
     }
 ]
