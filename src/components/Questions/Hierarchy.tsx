@@ -14,9 +14,7 @@ interface HierarchyProps {
 export function Hierarchy(props: HierarchyProps) {
     const [subquestion, setSubquestion] = useState(props.show ? props.question.questions.length - 1 : 0);
     return <>
-
         <Level
-
             show={props.show === undefined || props.show === false ? false : props.show}
             question={props.question.questions[subquestion]}
             callbackFinish={

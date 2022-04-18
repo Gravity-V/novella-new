@@ -4,6 +4,8 @@ import questions from './novella/questions.json'
 import { Level } from './components/Level'
 import { ButtonLevel } from './components/button-level/button'
 import { Answer } from './components/AnswerType';
+import { Container } from '@mui/material';
+import { Styles } from './components/button-level/button.style';
 
 // подтягивает стили из style без импорта
 function App() {
@@ -12,28 +14,29 @@ function App() {
 
   return (
     <div className="App">
-      <div className='top'>
-        <ButtonLevel answers={answers} totalLevel={questions.length}
-          callbackShowLevel={(level) => {
-            setLevel(level)
-          }}
-        />
-      </div>
-
-      {answers[level] && <Level answer={answers[level]} question={questions[level]} show={true} />}
-      {
-        !answers[level] && <Level question={questions[level]}
-          callbackFinish={
-            (answer) => {
-              setAnswers((old) => [...old, answer])
-
-              level < questions.length - 1 && setLevel(level + 1)
+      <div className='middle'>
+      <Container sx={Styles.ProgressBar} maxWidth='lg'>
+        <div className='top'>
+          <ButtonLevel answers={answers} totalLevel={questions.length}
+            callbackShowLevel={(level) => {
+              setLevel(level)
+            }}
+          />
+        </div>
+      </Container>
+        {answers[level] && <Level answer={answers[level]} question={questions[level]} show={true} />}
+        {
+          !answers[level] && <Level question={questions[level]}
+            callbackFinish={
+              (answer) => {
+                setAnswers((old) => [...old, answer])
+                level < questions.length - 1 && setLevel(level + 1)
+              }
             }
-          }
-          show={false}
-        />
-      }
-
+            show={false}
+          />
+        }
+      </div>
     </div>
   );
 }

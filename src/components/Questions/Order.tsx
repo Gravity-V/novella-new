@@ -19,33 +19,38 @@ export function Order(props: OrderProps) {
         setQuestion(newQuestion)
     }
     return <>
-        <p>{props.question.text}</p>
-        {<img src={props.question.background} />}
-        {
-            props.question.answers.map(
-                (_, i) => {
-                    return <FormControl key={i}
-                        disabled={props.show === undefined || props.show === false ? false : props.show}>
-                        <InputLabel>{i + 1}</InputLabel>
-                        <Select id={i.toString()} onChange={(e) =>
-                            handleChange(e.target.value as number, i)}
-                            value={props.answer && props.answer.order[i]} >
-                            {props.question.answers.map(
-                                (answer, i) => {
-                                    return <MenuItem value={i} key={i}>{answer.text}</MenuItem>
-                                }
-                            )}
-                        </Select>
-                    </FormControl>
-                }
-            )
-        }
-        <Button onClick={() =>
-            props.callbackFinish && props.callbackFinish({
-                type: 'order',
-                isCorrect: JSON.stringify(question) == JSON.stringify(props.question.order),
-                order: question as number[]
-            })} disabled={question.includes(-1)}
-        >Подтверрждаю</Button>
+        <div className='OrderBloc'>
+            <p className='text'>{props.question.text}</p>
+            {<img src={props.question.background} />}
+            {
+                props.question.answers.map(
+                    (_, i) => {
+                        return <div className='Order' style={{ backgroundImage: `url(${props.question.background})` }}>
+                            <FormControl style={{width: '50ch'}}
+                                key={i}
+                                disabled={props.show === undefined || props.show === false ? false : props.show}>
+                                <InputLabel>{i + 1}</InputLabel>
+                                <Select id={i.toString()} onChange={(e) =>
+                                    handleChange(e.target.value as number, i)}
+                                    value={props.answer && props.answer.order[i]} >
+                                    {props.question.answers.map(
+                                        (answer, i) => {
+                                            return <MenuItem value={i} key={i}>{answer.text}</MenuItem>
+                                        }
+                                    )}
+                                </Select>
+                            </FormControl>
+                        </div>
+                    }
+                )
+            }
+            <Button onClick={() =>
+                props.callbackFinish && props.callbackFinish({
+                    type: 'order',
+                    isCorrect: JSON.stringify(question) == JSON.stringify(props.question.order),
+                    order: question as number[]
+                })} disabled={question.includes(-1)}
+            >Подтверрждаю</Button>
+        </div>
     </>
 }

@@ -2,6 +2,7 @@ import { Button, TextField } from "@mui/material"
 import { QuestionName } from "../../novella/novellaInterrface"
 import React from 'react';
 import { AnswerName } from "../AnswerType";
+import { Styles } from "../button-level/button.style";
 
 interface NameProps {
     question: QuestionName
@@ -12,24 +13,26 @@ interface NameProps {
 
 export function Name(props: NameProps) {
     let name = ''
-
     return <>
-        <p>{props.question.text}</p>
-        {/* <img src={props.question.background} /> */}
-        <TextField
-            id="standard-basic"
-            label="Standard"
-            variant="standard"
-            aria-placeholder="Имя"
-            value={props.answer && props.answer.name}
-            onChange={(textField) => name = textField.target.value}
-            disabled={props.show}
-            onKeyDown={(e) => { name != '' && e.code == "Enter" && props.callbackFinish && props.callbackFinish({ type: 'name', isCorrect: true, name: name }) }}
-
-        />
-        {/* <Button
+        <div className='name'>
+            <p className="text">{props.question.text}</p>
+            {/* <img src={props.question.background} /> */}
+            <TextField sx={Styles.Name}
+                id="standard-basic"
+                label="ФИО"
+                variant="standard"
+                size="medium"
+                aria-placeholder="Имя"
+                inputProps={{ maxLength: '40ch' }}
+                value={props.answer && props.answer.name}
+                onChange={(textField) => name = textField.target.value}
+                disabled={props.show}
+                onKeyDown={(e) => { name != '' && e.code == "Enter" && props.callbackFinish && props.callbackFinish({ type: 'name', isCorrect: true, name: name }) }}
+            />
+            {/* <Button
             onClick={() => props.callbackFinish && props.callbackFinish({ type: 'name', isCorrect: true, name: name })}
             disabled={props.show}
         >Подтверрждаю</Button> */}
+        </div>
     </>
 }

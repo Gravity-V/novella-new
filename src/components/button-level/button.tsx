@@ -1,5 +1,5 @@
 import { Button, ButtonGroup } from "@mui/material";
-import { buttonStyles } from "./button.style";
+import { Styles } from "./button.style";
 import React from 'react';
 import { Answer } from "../AnswerType";
 
@@ -15,7 +15,7 @@ export function ButtonLevel(props: ButtonLevelProps) {
     const length = end - start;
     return Array.from({ length }, (_, i) => start + i);
   }
-  return <ButtonGroup variant="contained" sx={buttonStyles.button}>
+  return <ButtonGroup variant="contained">
     {
       range(0, props.totalLevel).map(
         (i) => {
@@ -23,7 +23,7 @@ export function ButtonLevel(props: ButtonLevelProps) {
 
           const color = props.answers[i] ? (props.answers[i].isCorrect ? 'success' : 'error') : 'primary';
 
-          return <Button onClick={() => { props.callbackShowLevel(i) }} key={i} color={color} disabled={disable}>{i + 1}</Button>
+          return <Button sx={Styles.Text} onClick={() => { props.callbackShowLevel(i) }} key={i} color={color} disabled={disable}>{i + 1}</Button>
         }
       )
     }

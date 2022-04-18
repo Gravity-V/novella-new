@@ -3,25 +3,72 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* position: relative; */
-    padding-top: 14%;
+    align-items: center;
 }
 
 .answer {
     background-color: rgba(0, 0, 0, 0.2);
-    color:rgba(0, 0, 0);
-    /* width: 1200px; */
+    color: rgba(0, 0, 0);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+    width: 60%;
 }
 
 .question {
-    background-color: rgba(0, 0, 0, 0.3);
-    font-size: 30px;
-    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.25);
+    font-size: 24px;
+    padding: 8px;
     margin-bottom: 6px;
     border: 50px;
-    border-color: black;
+    justify-content: space-between;
+    width: 99vw;
+}
+
+.Standart{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.text {
+    align-self: center;
+    font-size: 30px;
+    padding-bottom: 15px;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.Centers {
+    align-self: center;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.Order {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.OrderBloc{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: center;
+    height: 100%;
 }
