@@ -25,9 +25,14 @@ function App() {
         !answers[level] && <Level question={questions[level]}
           callbackFinish={
             (answer) => {
-              setAnswers((old) => [...old, answer])
 
-              level < questions.length - 1 && setLevel(level + 1)
+              setAnswers((old) => [...old, answer])
+              console.log(answers)
+              if (level < questions.length - 1)
+                setLevel(level + 1)
+              else {
+
+              }
             }
           }
           show={false}

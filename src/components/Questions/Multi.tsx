@@ -29,7 +29,7 @@ export function Multi(props: MultiProps) {
                         control={<Checkbox defaultChecked={props.answer != undefined && props.answer.userAnswers.includes(answer.text)} />}
                         onChange={() => {
                             setCheck((old) => { old[i] = !old[i]; return old });
-                            console.log(check)
+                            //console.log(check)
                             setLock(false)
                         }}
                         label={answer.text}
@@ -65,6 +65,8 @@ export function Multi(props: MultiProps) {
             answer && <Button
                 onClick={
                     () => {
+                        setAnswer(undefined)
+                        setLock(true)
                         props.callbackFinish && props.callbackFinish(answer)
                     }
                 }
