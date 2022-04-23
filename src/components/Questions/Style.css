@@ -65,7 +65,7 @@
     padding: 10px;
 }
 
-.OrderBloc{
+.OrderBlock{
     display: flex;
     justify-content: center;
     flex-direction: column;

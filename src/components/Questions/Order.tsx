@@ -19,7 +19,7 @@ export function Order(props: OrderProps) {
         setQuestion(newQuestion)
     }
     return <>
-        <div className='OrderBloc'>
+        <div className='OrderBlock'>
             <p className='text'>{props.question.text}</p>
             {<img src={props.question.background} />}
             {

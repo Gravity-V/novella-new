@@ -38,7 +38,7 @@ export function Name(props: NameProps) {
             {<Button
                 disabled={name == ''}
                 onClick={() => props.callbackFinish && props.callbackFinish({ type: 'name', isCorrect: true, name: name })}
-            >Подтверрждаю</Button>}
+            >Подтверждаю</Button>}
         </div>
     </>
 }
