@@ -3,6 +3,7 @@ import { QuestionMulti } from "../../novella/novellaInterrface"
 import React from 'react';
 import { AnswerMulti } from "../AnswerType";
 import { Button, Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/material";
+import { Styles } from "../button-level/button.style";
 
 interface MultiProps {
     question: QuestionMulti
@@ -74,7 +75,7 @@ export function Multi(props: MultiProps) {
             </Button>
         }
         <div>
-            {(answer || props.show) && comment.map((com) => <Typography>{com}</Typography>)}
+            {(answer || props.show) && comment.map((com) => <Typography sx={Styles.Multi}>{com}</Typography>)}
         </div>
     </>
 }

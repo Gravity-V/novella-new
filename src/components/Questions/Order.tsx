@@ -32,7 +32,8 @@ export function Order(props: OrderProps) {
                                 <InputLabel>{i + 1}</InputLabel>
                                 <Select id={i.toString()} onChange={(e) =>
                                     handleChange(e.target.value as number, i)}
-                                    value={props.answer && props.answer.order[i]} >
+                                    value={props.answer && props.answer.order[i]}
+                                    label="..">
                                     {props.question.answers.map(
                                         (answer, i) => {
                                             return <MenuItem value={i} key={i}>{answer.text}</MenuItem>
