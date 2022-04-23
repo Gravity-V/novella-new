@@ -1,9 +1,9 @@
-import { Button, Typography } from "@mui/material"
+import { Button, ThemeProvider, Typography } from "@mui/material"
 import { QuestionStandart } from "../../novella/novellaInterrface"
 import React, { useState } from 'react';
 import { AnswerStandart } from "../AnswerType";
+import { Styles, getTheme } from "../button-level/button.style";
 import './Style.css';
-import { Styles } from "../button-level/button.style";
 
 interface StandartProps {
     question: QuestionStandart
@@ -21,7 +21,7 @@ export function Standart(props: StandartProps) {
             <div className="Standart">
                 <div className="answer">
                     {props.question.answers.map(
-                        (answer, i) => <Button sx={Styles.Standart}
+                        (answer, i) => <ThemeProvider theme={getTheme(answer.isCorrect)}><Button sx={Styles.Standart}
                             variant="outlined"
                             disabled={props.show === undefined || props.show === false ? lock : props.show}
                             color={props.answer ? (props.answer.userAnswer == answer.text ? 'secondary' : 'primary') : 'primary'}
@@ -35,7 +35,7 @@ export function Standart(props: StandartProps) {
                                     props.callbackFinish && props.callbackFinish({ isCorrect: answer.isCorrect, type: "standart", userAnswer: answer.text })
                                 }
                             }}
-                        >{answer.text}</Button>
+                        >{answer.text}</Button></ThemeProvider>
                     )}
                     {answer && <Button variant="contained"
                         onClick={() => {
@@ -50,7 +50,7 @@ export function Standart(props: StandartProps) {
             </div>
 
             <div className="question">
-                {props.question.text}
+                {!(answer || props.show) && props.question.text}
                 {(answer || props.show) && <Typography sx={Styles.TextComment}>{comment}</Typography>}
             </div>
         </div>
