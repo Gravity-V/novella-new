@@ -51,7 +51,7 @@ export function Order(props: OrderProps) {
                     isCorrect: JSON.stringify(question) == JSON.stringify(props.question.order),
                     order: question as number[]
                 })} disabled={question.includes(-1)}
-            >Подтверрждаю</Button>
+            >Подтверждаю</Button>
         </div>
     </>
 }
