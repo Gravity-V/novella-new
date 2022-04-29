@@ -8,14 +8,15 @@ import { createTheme } from "@mui/material/styles";
 //     }
 // });
 
-export const getTheme = (correct: boolean) => {
+export const getTheme = (correct: boolean, clic: boolean) => {
   const theme = createTheme({
     components: {
       MuiButton: {
         styleOverrides: {
           root: {
             "&.Mui-disabled": {
-              color: correct ? "green" : 'red'
+              color:clic? (correct ? 'green' : 'red'):'',
+              backgroundColor: 'rgba(100, 100, 100, 0.25)'
             }
           }
         }
