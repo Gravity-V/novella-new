@@ -10,9 +10,11 @@ export interface AnswerSex extends Answer {
 }
 export interface AnswerStandart extends Answer {
     userAnswer: string
+    comment: string
 }
 export interface AnswerMulti extends Answer {
     userAnswers: string[]
+    //comment: string[]
 }
 export interface AnswerHierarchy extends Answer {
     answer: Answer
