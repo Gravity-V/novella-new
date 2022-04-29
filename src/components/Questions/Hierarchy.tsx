@@ -12,16 +12,20 @@ interface HierarchyProps {
 }
 
 export function Hierarchy(props: HierarchyProps) {
-    const [subquestion, setSubquestion] = useState(props.show ? props.question.questions.length - 1 : 0);
+    const [subquestion, setSubquestion] = useState<number>(0);
     return <>
         <Level
             show={props.show === undefined || props.show === false ? false : props.show}
-            question={props.question.questions[subquestion]}
+            answer={props.answer ? props.answer.answer : undefined}
+            question={props.show && props.answer ? props.question.questions[props.answer.subQuestion] : props.question.questions[subquestion]}
             callbackFinish={
                 (answer) => {
                     if (subquestion < props.question.questions.length - 1) {
                         answer.isCorrect && setSubquestion(subquestion + 1)
-                        !(answer.isCorrect) && props.callbackFinish && props.callbackFinish({ type: 'hierarchy', isCorrect: true, answer: answer, subQuestion: subquestion })
+                        if (!answer.isCorrect){
+                            answer.isCorrect = true;
+                            props.callbackFinish && props.callbackFinish({ type: 'hierarchy', isCorrect: true, answer: answer, subQuestion: subquestion })
+                        }
                     }
                     else {
                         props.callbackFinish && props.callbackFinish({ type: 'hierarchy', isCorrect: answer.isCorrect, answer: answer, subQuestion: subquestion })
