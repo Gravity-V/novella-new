@@ -19,7 +19,7 @@ export function Order(props: OrderProps) {
         setQuestion(newQuestion)
     }
     return <>
-        <div className='OrderBloc'>
+        <div className='OrderBlock'>
             <p className='text'>{props.question.text}</p>
             {<img src={props.question.background} />}
             {
@@ -32,7 +32,8 @@ export function Order(props: OrderProps) {
                                 <InputLabel>{i + 1}</InputLabel>
                                 <Select id={i.toString()} onChange={(e) =>
                                     handleChange(e.target.value as number, i)}
-                                    value={props.answer && props.answer.order[i]} >
+                                    value={props.answer && props.answer.order[i]}
+                                    label="..">
                                     {props.question.answers.map(
                                         (answer, i) => {
                                             return <MenuItem value={i} key={i}>{answer.text}</MenuItem>
@@ -50,7 +51,7 @@ export function Order(props: OrderProps) {
                     isCorrect: JSON.stringify(question) == JSON.stringify(props.question.order),
                     order: question as number[]
                 })} disabled={question.includes(-1)}
-            >Подтверрждаю</Button>
+            >Подтверждаю</Button>
         </div>
     </>
 }
