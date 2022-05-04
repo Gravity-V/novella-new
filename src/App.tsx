@@ -6,6 +6,7 @@ import { ButtonLevel } from './components/button-level/button'
 import { Answer } from './components/AnswerType';
 import { Container } from '@mui/material';
 import { Styles } from './components/button-level/button.style';
+import { Dnd } from './components/TestDND';
 
 // подтягивает стили из style без импорта
 function App() {
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className='middle'>
+      {/* <div className='middle'>
       <Container sx={Styles.ProgressBar} maxWidth='lg'>
         <div className='top'>
           <ButtonLevel answers={answers} totalLevel={questions.length}
@@ -41,7 +42,9 @@ function App() {
             show={false}
           />
         }
-      </div>
+      </div> */}
+      <Dnd></Dnd>
+
     </div>
   );
 }
