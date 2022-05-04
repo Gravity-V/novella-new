@@ -6,6 +6,7 @@ import { Name } from './Questions/Name';
 import { Hierarchy } from './Questions/Hierarchy';
 import { Order } from './Questions/Order';
 import { Multi } from './Questions/Multi'
+import { Finish } from './Questions/Finish'
 import { Answer, AnswerHierarchy, AnswerName, AnswerSex, AnswerStandart, AnswerMulti, AnswerOrder } from './AnswerType';
 
 interface LevelProps {
@@ -13,6 +14,7 @@ interface LevelProps {
     callbackFinish?: (answer: Answer) => void
     show: boolean
     answer?: Answer
+    AnswerFinish?: Answer[]
 }
 
 export function Level(props: LevelProps) {
@@ -69,6 +71,8 @@ export function Level(props: LevelProps) {
             else {
                 return <Multi callbackFinish={props.callbackFinish} question={props.question as QuestionMulti} />
             }
+        case 'finish':/** */
+            return <Finish answers={props.AnswerFinish} />
         default:
             return <></>
     }

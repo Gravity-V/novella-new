@@ -66,7 +66,9 @@ export function Multi(props: MultiProps) {
                     () => {
                         setAnswer(undefined)
                         setLock(true)
+                        setComment([])
                         props.callbackFinish && props.callbackFinish(answer)
+
                     }
                 }
             >
