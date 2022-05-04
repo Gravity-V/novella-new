@@ -1,6 +1,5 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
-
 import { DragDropContext, Droppable, Draggable, DropResult, DraggingStyle, NotDraggingStyle } from "react-beautiful-dnd";
 
 const fakeData = () => {
@@ -31,8 +30,6 @@ export function Dnd() {
         );
         setItems(itemsNewOrder)
     }
-
-
 
     return (
         <>

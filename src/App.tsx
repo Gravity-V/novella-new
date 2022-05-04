@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <div className='middle'>
+      <div className='middle'>
       <Container sx={Styles.ProgressBar} maxWidth='lg'>
         <div className='top'>
           <ButtonLevel answers={answers} totalLevel={questions.length}
@@ -42,9 +42,7 @@ function App() {
             show={false}
           />
         }
-      </div> */}
-      <Dnd></Dnd>
-
+      </div>
     </div>
   );
 }

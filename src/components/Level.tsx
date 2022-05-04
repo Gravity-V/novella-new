@@ -62,7 +62,7 @@ export function Level(props: LevelProps) {
                     callbackFinish={props.callbackFinish}
                     question={props.question as QuestionOrder} />
             }
-        case 'multi':/** */
+        case 'multi':
             if (props.show) {
                 return <Multi question={props.question as QuestionMulti} answer={props.answer as AnswerMulti} show={true} />
             }
