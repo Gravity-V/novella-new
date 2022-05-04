@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { QuestionMulti } from "../../novella/novellaInterrface"
 import React from 'react';
 import { AnswerMulti } from "../AnswerType";
@@ -18,6 +18,9 @@ export function Multi(props: MultiProps) {
     const [lock, setLock] = useState(true)
     const [check, setCheck] = useState(new Array(props.question.answers.length).fill(false))
     let correct: boolean[] = new Array(props.question.answers.length).fill(false)
+    useEffect(() => {
+        props.show && props.answer && setComment(props.answer.comment)
+    })
     return <>
         <div className="text">{props.question.text}</div>
         <div className="Centers">
@@ -57,7 +60,7 @@ export function Multi(props: MultiProps) {
                         }
                     )
                     setComment((old) => [...old, ...comments])
-                    setAnswer({ isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: userAnswers })
+                    setAnswer({ isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: userAnswers, comment: comments })
                 }}
             >Подтверрждаю</Button>
         }
@@ -65,9 +68,9 @@ export function Multi(props: MultiProps) {
             answer && <Button
                 onClick={
                     () => {
-                        setAnswer(undefined)
                         setLock(true)
                         props.callbackFinish && props.callbackFinish(answer)
+                        setAnswer(undefined)
                     }
                 }
             >
@@ -75,6 +78,7 @@ export function Multi(props: MultiProps) {
             </Button>
         }
         <div>
+            
             {(answer || props.show) && comment.map((com) => <Typography sx={Styles.Multi}>{com}</Typography>)}
         </div>
     </>

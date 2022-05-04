@@ -14,7 +14,7 @@ export interface AnswerStandart extends Answer {
 }
 export interface AnswerMulti extends Answer {
     userAnswers: string[]
-    //comment: string[]
+    comment: string[]
 }
 export interface AnswerHierarchy extends Answer {
     answer: Answer
