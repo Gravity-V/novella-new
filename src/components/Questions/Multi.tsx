@@ -69,6 +69,7 @@ export function Multi(props: MultiProps) {
                 onClick={
                     () => {
                         setLock(true)
+                        setComment([])
                         props.callbackFinish && props.callbackFinish(answer)
                         setAnswer(undefined)
                     }
@@ -78,7 +79,7 @@ export function Multi(props: MultiProps) {
             </Button>
         }
         <div>
-            
+
             {(answer || props.show) && comment.map((com) => <Typography sx={Styles.Multi}>{com}</Typography>)}
         </div>
     </>

@@ -13,6 +13,9 @@ function App() {
   const [level, setLevel] = useState(0)
   const [answers, setAnswers] = useState<Answer[]>([]);
 
+  const [isFinish, setFinish] = useState<boolean>(false);
+
+
   return (
     <div className="App">
       <div className='middle'>
@@ -27,16 +30,18 @@ function App() {
       </Container>
         {answers[level] && <Level answer={answers[level]} question={questions[level]} show={true} />}
         {
-          !answers[level] && <Level question={questions[level]}
+          !answers[level] && !isFinish && <Level question={questions[level]} AnswerFinish={answers}
             callbackFinish={
               (answer) => {
                 setAnswers((old) => [...old, answer])
-                console.log(answers)
+                //
                 if (level < questions.length - 1)
                   setLevel(level + 1)
                 else {
-  
+                  //setFinish(true);
+                  //setLevel(level + 1);
                 }
+                //
               }
             }
             show={false}

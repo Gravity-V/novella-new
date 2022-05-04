@@ -564,5 +564,8 @@
                 "isCorrect":false
             }   
         ]
+    },
+    {
+        "type":"finish"
     }
 ]
