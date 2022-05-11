@@ -2,7 +2,7 @@ import { Button, ThemeProvider, Typography } from "@mui/material"
 import { QuestionStandart } from "../../novella/novellaInterrface"
 import React, { useState } from 'react';
 import { AnswerStandart } from "../AnswerType";
-import { Styles, getTheme } from "../button-level/button.style";
+import { Styles, getTheme, getTheme2 } from "../button-level/button.style";
 import './Style.css';
 
 interface StandartProps {
@@ -22,19 +22,17 @@ export function Standart(props: StandartProps) {
             <div className="Standart">
                 <div className="answer">
                     {props.question.answers.map(
-                        (answer, i) => <ThemeProvider
+                        (answer, i) => <ThemeProvider key={i}
                             theme={getTheme(props.answer ? props.answer.isCorrect : answer.isCorrect, clic != undefined ? clic == i : (props.answer != undefined ? (props.answer.userAnswer == answer.text) : false))}>
                             <Button sx={Styles.Standart}
                                 variant="outlined"
                                 disabled={props.show === undefined || props.show === false ? lock : props.show}
                                 color={props.answer ? (props.answer.userAnswer == answer.text ? 'secondary' : 'primary') : 'primary'}
-                                key={i}
                                 onClick={() => {
                                     if (answer.comment) {
                                         setLock(true)
                                         setComment(answer.comment)
                                         setAnswer({ isCorrect: answer.isCorrect, type: "standart", userAnswer: answer.text, comment: answer.comment })
-
                                     } else {
                                         props.callbackFinish && props.callbackFinish({ isCorrect: answer.isCorrect, type: "standart", userAnswer: answer.text, comment: '' })
                                     }
@@ -48,16 +46,18 @@ export function Standart(props: StandartProps) {
                             setLock(false)
                             props.callbackFinish && props.callbackFinish(answer)
                             setAnswer(undefined)
-                        }}>Далее
+                        }}
+                    >
+                        Далее
                     </Button>}
                 </div>
             </div>
-
             <div className="question">
                 {!(answer || props.show) && props.question.text}
-                {(answer || props.show) && <Typography sx={Styles.TextComment}>
-                    {answer ? comment : props.show && props.answer ? props.answer.comment : ''}
-                </Typography>}
+                {(answer || props.show) && <ThemeProvider key={'i'}
+                    theme={getTheme2(props.answer ? true : false)}><Typography sx={Styles.TextComment} key={props.question.text}>
+                        {answer ? comment : props.show && props.answer ? props.answer.comment : ''}
+                    </Typography></ThemeProvider>}
             </div>
         </div>
     </>
