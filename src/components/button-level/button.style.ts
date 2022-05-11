@@ -23,10 +23,25 @@ export const getTheme = (correct: boolean, clic: boolean) => {
       }
     }
   });
-
   return theme
 }
 
+export const getTheme2 = (correct: boolean) => {
+  const theme = createTheme({
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            "&.Mui-disabled": {
+              visibility: correct ?"hidden": "visible"
+            }
+          }
+        }
+      }
+    }
+  });
+  return theme
+}
 
 export const Styles = {
   Text: {
@@ -36,8 +51,15 @@ export const Styles = {
     fontSize: 22
   },
   Multi: {
-    fontSize: 16,
-    backgroundColor: 'rgba(0, 0, 0, 0.25)'
+    fontSize: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    color: 'rgba(255, 255, 255, 1)',
+    marginLeft: 7,
+    marginRight: 7,
+    paddingRight: '10px',
+    paddingLeft: '10px',
+    paddingTop: '5px',
+    paddingBottom: '5px'
   },
   Sex: {
     fontSize: 24,

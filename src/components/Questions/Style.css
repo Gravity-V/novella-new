@@ -38,6 +38,10 @@
     align-self: center;
     font-size: 30px;
     padding-bottom: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .middle {
@@ -49,6 +53,11 @@
 
 .Centers {
     align-self: center;
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    width: 60%;
 }
 
 .name {
