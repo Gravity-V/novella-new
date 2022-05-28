@@ -67,10 +67,13 @@ export const Styles = {
     paddingRight: 10,
     paddingTop: 6,
     paddingBottom: 6,
-    margin: 11
+    marginLeft: 11,
+    marginRight: 11,
+    marginTop: 1,
+    marginBottom: 11 
   },
   Name: {
-    width: '40%',
+    width: '100%',
   },
   ProgressBar: {
     display: 'flex',

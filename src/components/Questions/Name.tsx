@@ -17,25 +17,27 @@ export function Name(props: NameProps) {
     return <>
         <div className='name'>
             <p className="text">{props.question.text}</p>
-            {/* <img src={props.question.background} /> */}
-            <TextField sx={Styles.Name}
-                id="standard-basic"
-                label="ФИО"
-                variant="standard"
-                size="medium"
-                aria-placeholder="Имя"
-                inputProps={{ maxLength: '40ch' }}
-                value={props.answer && props.answer.name}
-                // onChange={(textField) => name = textField.target.value}
-                onChange={(textField) => setName(textField.target.value as string)}
-                disabled={props.show}
-                onKeyDown={(e) => { name != '' && e.code == "Enter" && props.callbackFinish && props.callbackFinish({ type: 'name', isCorrect: true, name: name }) }}
-            />
+            <div style={{ backgroundColor: 'rgb(232 240 254)', padding: '20px', width: '40%', marginBottom: '20px' }}>
+                <TextField sx={Styles.Name}
+                    id="standard-basic"
+                    label="ФИО"
+                    variant="standard"
+                    size="medium"
+                    aria-placeholder="Имя"
+                    inputProps={{ maxLength: '40ch' }}
+                    value={props.answer && props.answer.name}
+                    // onChange={(textField) => name = textField.target.value}
+                    onChange={(textField) => setName(textField.target.value as string)}
+                    disabled={props.show}
+                    onKeyDown={(e) => { name != '' && e.code == "Enter" && props.callbackFinish && props.callbackFinish({ type: 'name', isCorrect: true, name: name }) }}
+                />
+            </div>
             {/* {<Button
                 onClick={() => props.callbackFinish && props.callbackFinish({ type: 'name', isCorrect: true, name: name })}
                 disabled={props.show}
             >Подтверрждаю</Button>} */}
             {<Button
+                variant="contained"
                 disabled={name == ''}
                 onClick={() => props.callbackFinish && props.callbackFinish({ type: 'name', isCorrect: true, name: name })}
             >Подтверждаю</Button>}

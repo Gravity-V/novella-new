@@ -1,6 +1,7 @@
 export interface Answer {
     type: 'name' | 'sex' | 'standart' | 'order' | 'multi' | 'hierarchy'
     isCorrect: boolean
+    // isBackground: string
 }
 export interface AnswerName extends Answer {
     name: string

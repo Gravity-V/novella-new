@@ -15,7 +15,9 @@ interface SexProps {
 export function Sex(props: SexProps) {
     return <>
         <div className='name'>
+            <div style={{marginTop: 100, marginRight: 30}}>
             <p className="text">{props.question.text}</p>
+            </div>
             <div>
                 <Button sx={Styles.Sex}
                     variant="contained"

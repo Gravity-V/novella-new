@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { QuestionOrder } from '../../novella/novellaInterrface';
 import { AnswerOrder } from '../AnswerType';
 import { DragDropContext, Droppable, Draggable, DropResult, DraggingStyle, NotDraggingStyle } from "react-beautiful-dnd";
-//import { DragHandle } from '@mui/icons-material'
+import { DragHandle } from '@mui/icons-material';
 
 interface OrderProps {
     question: QuestionOrder
@@ -21,12 +21,10 @@ class Item {
     }
 }
 
-
-
 const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: "none",
-    padding: 16,
+    padding: 6,
     maxHeight: "64px",
     // change background colour if dragging
     background: isDragging ? "lightgreen" : "#1976d2",
@@ -37,10 +35,8 @@ const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
 const getListStyle = (isDraggingOver: boolean) => ({
     background: isDraggingOver ? "lightblue" : "lightgrey",
     padding: 8,
-    height: "257px"
+    height: "176px"
 });
-
-
 
 export function Order(props: OrderProps) {
     const [dragElems, setDragElems] = useState<Item[]>([])
@@ -76,10 +72,10 @@ export function Order(props: OrderProps) {
 
     return <>
         <div className='OrderBlock'>
-            <p className='text'>{props.question.text}</p>
+            <p className='text' style={{ marginTop: '22%' }}>{props.question.text}</p>
             {<img src={props.question.background} />}
             <DragDropContext onDragEnd={onDragEnd}>
-                <div style={{ height: "320px", width: "90vw" }}>
+                <div style={{ height: "200px", width: "80vw" }}>
                     <Droppable droppableId='ksfsdkaj'>
                         {(provider, snapshot) => (
                             <List
@@ -101,7 +97,7 @@ export function Order(props: OrderProps) {
                                                         provider.draggableProps.style)}
                                                 >
                                                     <ListItemIcon>
-                                                        {/* <DragHandle /> */}
+                                                        <DragHandle />
                                                     </ListItemIcon>
                                                     <ListItemText primary={e.text} />
                                                 </ListItem>
@@ -115,14 +111,18 @@ export function Order(props: OrderProps) {
                 </div>
             </DragDropContext>
 
-            <Button disabled={props.show} onClick={() => {
+        </div>
+        <Button
+            style={{marginBottom: '6%', marginLeft: '40%', marginRight: '40%'}}
+            variant='contained'
+            disabled={props.show}
+            onClick={() => {
                 const order = dragElems.map((e) => e.key)
                 const answer: AnswerOrder = { isCorrect: arraysEqual(order, props.question.order), order: order, type: 'order' }
                 props.callbackFinish && props.callbackFinish(answer)
             }}
-            >
-                Подтверждаю
-            </Button>
-        </div>
+        >
+            Подтверждаю
+        </Button>
     </>
 }

@@ -33,13 +33,13 @@ export function Multi(props: MultiProps) {
         props.show && props.answer && setComment(props.answer.comment)
     })
     return <>
-        <div className="text">{props.question.text}</div>
-        <div className="Centers">
+        <div className="text" style={{ marginTop: '14%' }}>{props.question.text}</div>
+        <div className="Centers" >
             <FormGroup style={{ alignContent: "center" }}>
                 {props.question.answers.map(
                     (answer, i) => {
                         return <div key={answer.text} style={{ backgroundColor: "rgba(0, 99, 204, 1)", paddingLeft: "1%", paddingRight: "1%", margin: 5, width: "97%" }}>
-                            <FormControlLabel style={{width: "100%"}}
+                            <FormControlLabel style={{ width: "100%" }}
                                 disabled={props.show === undefined || props.show === false ? false : props.show}
                                 control={
                                     <Checkbox style={{ color: "white" }} defaultChecked={props.answer != undefined && props.answer.userAnswers.includes(answer.text)} />
@@ -58,7 +58,9 @@ export function Multi(props: MultiProps) {
         </div>
         {
             answer === undefined && <Button
+                style={{ width: '200px', alignSelf: 'center' }}
                 disabled={props.show === undefined || props.show === false ? lock : props.show}
+                variant='contained'
                 onClick={() => {
                     let userAnswers: string[] = [];
                     let comments: string[] = [];
@@ -67,7 +69,7 @@ export function Multi(props: MultiProps) {
                             check[i] && userAnswers.push(answer.text)
                             // comments.map((_, a)=> {comments != undefined ? comments[a] == answer.comment ? check[i] && answer.comment !== undefined && comments.push(answer.comment) : "" : "EROR" })
                             // check[i] && answer.comment !== undefined && comments.push(answer.comment)
-                            check[i] && answer.comment !== undefined && (comments.includes(answer.comment) ? true: comments.push(answer.comment))
+                            check[i] && answer.comment !== undefined && (comments.includes(answer.comment) ? true : comments.push(answer.comment))
                         }
                     )
                     console.log(comments);
@@ -84,6 +86,8 @@ export function Multi(props: MultiProps) {
         }
         {
             answer && <Button
+                style={{ width: '160px', alignSelf: 'center' }}
+                variant='contained'
                 onClick={
                     () => {
                         setLock(true)

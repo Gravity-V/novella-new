@@ -14,6 +14,7 @@
     justify-content: space-between;
     text-align: center;
     width: 60%;
+    margin-top: 11%;
 }
 
 .question {
@@ -36,12 +37,14 @@
 
 .text {
     align-self: center;
-    font-size: 30px;
-    padding-bottom: 15px;
+    font-size: 25px;
+    padding: 15px;
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 10px;
     margin-bottom: 10px;
+    background-color: rgb(202, 240, 255);
+    border-radius: 20px;
 }
 
 .middle {
@@ -57,7 +60,7 @@
     margin-right: 200px;
     background-color: rgba(0, 0, 0, 0.2);
     color: white;
-    width: 60%;
+    width: 80%;
 }
 
 .name {
@@ -76,7 +79,7 @@
 
 .OrderBlock{
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     flex-direction: column;
     align-self: center;
     height: 100%;
