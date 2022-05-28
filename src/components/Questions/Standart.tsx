@@ -1,9 +1,10 @@
 import { Button, ThemeProvider, Typography } from "@mui/material"
 import { QuestionStandart } from "../../novella/novellaInterrface"
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AnswerStandart } from "../AnswerType";
 import { Styles, getTheme, getTheme2 } from "../button-level/button.style";
 import './Style.css';
+import { Context } from "./context";
 
 interface StandartProps {
     question: QuestionStandart
@@ -17,8 +18,10 @@ export function Standart(props: StandartProps) {
     const [answer, setAnswer] = useState<AnswerStandart | undefined>(undefined)
     const [lock, setLock] = useState<boolean>(false)
     const [clic, setClic] = useState<number>()
+    const context = useContext(Context)//
+
     return <>
-        <div className="box" style={{ backgroundImage: `url(${props.question.background})` }}>
+        <div className="box"  >
             <div className="Standart">
                 <div className="answer">
                     {props.question.answers.map(
@@ -32,6 +35,7 @@ export function Standart(props: StandartProps) {
                                     if (answer.comment) {
                                         setLock(true)
                                         setComment(answer.comment)
+                                        context && (answer.isCorrect ? context.setBackground("/background/smile.png") : context.setBackground("/background/discontent.png"))//
                                         setAnswer({ isCorrect: answer.isCorrect, type: "standart", userAnswer: answer.text, comment: answer.comment })
                                     } else {
                                         props.callbackFinish && props.callbackFinish({ isCorrect: answer.isCorrect, type: "standart", userAnswer: answer.text, comment: '' })
@@ -44,6 +48,7 @@ export function Standart(props: StandartProps) {
                     {answer && <Button variant="contained"
                         onClick={() => {
                             setLock(false)
+                            context && context.setBackground("/background/interested.png")
                             props.callbackFinish && props.callbackFinish(answer)
                             setAnswer(undefined)
                         }}

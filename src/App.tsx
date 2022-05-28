@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { createContext, useCallback, useState } from 'react';
 import './App.css';
 import questions from './novella/questions.json'
 import { Level } from './components/Level'
@@ -8,6 +8,13 @@ import { Container } from '@mui/material';
 import { Styles } from './components/button-level/button.style';
 import { Dnd } from './components/TestDND';
 
+import { Context } from "./components/Questions/context";
+// interface IContext {
+//   setBackground: Function
+// }
+
+// export const Context = createContext<IContext | null>(null)
+
 // подтягивает стили из style без импорта
 function App() {
   const [level, setLevel] = useState(0)
@@ -15,40 +22,44 @@ function App() {
 
   const [isFinish, setFinish] = useState<boolean>(false);
 
+  const [background, setBackground] = useState<string>('/background/interested.png');
 
-  return (
-    <div className="App">
-      <div className='middle'>
-      <Container sx={Styles.ProgressBar} maxWidth='lg'>
-        <div className='top'>
-          <ButtonLevel answers={answers} totalLevel={questions.length}
-            callbackShowLevel={(level) => {
-              setLevel(level)
-            }}
-          />
-        </div>
-      </Container>
-        {answers[level] && <Level answer={answers[level]} question={questions[level]} show={true} />}
-        {
-          !answers[level] && !isFinish && <Level question={questions[level]} AnswerFinish={answers}
-            callbackFinish={
-              (answer) => {
-                setAnswers((old) => [...old, answer])
-                //
-                if (level < questions.length - 1)
-                  setLevel(level + 1)
-                else {
-                  //setFinish(true);
-                  //setLevel(level + 1);
+  return ( //почему именно так?
+    <Context.Provider value={{ setBackground }}>
+      <div className="App">
+        <div className='middle' style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: "100%" }} >
+          <Container sx={Styles.ProgressBar} maxWidth='lg'>
+            <div className='top'>
+              <ButtonLevel answers={answers} totalLevel={questions.length}
+                callbackShowLevel={(level) => {
+                  setLevel(level)
+                }}
+              />
+            </div>
+          </Container>
+          {/* {answers[level] && (answers[level].isCorrect ? setBackground("/background/smile.png") : setBackground("/background/discontent.png"))} */}
+          {answers[level] && <Level answer={answers[level]} question={questions[level]} show={true} />}
+          {
+            !answers[level] && !isFinish && <Level question={questions[level]} AnswerFinish={answers}
+              callbackFinish={
+                (answer) => {
+                  setAnswers((old) => [...old, answer])
+                  //
+                  if (level < questions.length - 1)
+                    setLevel(level + 1)
+                  else {
+                    //setFinish(true);
+                    //setLevel(level + 1);
+                  }
+                  //
                 }
-                //
               }
-            }
-            show={false}
-          />
-        }
+              show={false}
+            />
+          }
+        </div>
       </div>
-    </div>
+    </Context.Provider>
   );
 }
 

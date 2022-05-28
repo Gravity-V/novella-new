@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { QuestionOrder } from '../../novella/novellaInterrface';
 import { AnswerOrder } from '../AnswerType';
 import { DragDropContext, Droppable, Draggable, DropResult, DraggingStyle, NotDraggingStyle } from "react-beautiful-dnd";
-import { DragHandle } from '@mui/icons-material'
+//import { DragHandle } from '@mui/icons-material'
 
 interface OrderProps {
     question: QuestionOrder
@@ -101,7 +101,7 @@ export function Order(props: OrderProps) {
                                                         provider.draggableProps.style)}
                                                 >
                                                     <ListItemIcon>
-                                                        <DragHandle />
+                                                        {/* <DragHandle /> */}
                                                     </ListItemIcon>
                                                     <ListItemText primary={e.text} />
                                                 </ListItem>
