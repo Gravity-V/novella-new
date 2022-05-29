@@ -9,6 +9,7 @@ import { Styles } from './components/button-level/button.style';
 import { Dnd } from './components/TestDND';
 
 import { Context } from "./components/Questions/context";
+import { truncate } from 'fs';
 // interface IContext {
 //   setBackground: Function
 // }
@@ -19,9 +20,6 @@ import { Context } from "./components/Questions/context";
 function App() {
   const [level, setLevel] = useState(0)
   const [answers, setAnswers] = useState<Answer[]>([]);
-
-  const [isFinish, setFinish] = useState<boolean>(false);
-
   const [background, setBackground] = useState<string>('/background/interested.png');
 
   return ( //почему именно так?
@@ -37,13 +35,13 @@ function App() {
               />
             </div>
           </Container>
-          {/* {answers[level] && (answers[level].isCorrect ? setBackground("/background/smile.png") : setBackground("/background/discontent.png"))} */}
           {answers[level] && <Level answer={answers[level]} question={questions[level]} show={true} />}
           {
-            !answers[level] && !isFinish && <Level question={questions[level]} AnswerFinish={answers}
+            !answers[level] && <Level question={questions[level]} AnswerFinish={answers}
               callbackFinish={
                 (answer) => {
                   setAnswers((old) => [...old, answer])
+
                   //
                   if (level < questions.length - 1)
                     setLevel(level + 1)

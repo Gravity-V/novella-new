@@ -1,7 +1,8 @@
 import { Button, ButtonGroup } from "@mui/material";
 import { Styles } from "./button.style";
-import React from 'react';
+import React, { useContext } from 'react';
 import { Answer } from "../AnswerType";
+import { Context } from "../Questions/context";
 
 interface ButtonLevelProps {
   totalLevel: number
@@ -10,6 +11,7 @@ interface ButtonLevelProps {
 }
 
 export function ButtonLevel(props: ButtonLevelProps) {
+  const context = useContext(Context)//
   console.log()
   const range = (start: number, end: number) => {
     const length = end - start;
@@ -23,7 +25,15 @@ export function ButtonLevel(props: ButtonLevelProps) {
 
           const color = props.answers[i] ? (props.answers[i].isCorrect ? 'success' : 'error') : 'primary';
 
-          return <Button sx={Styles.Text} onClick={() => { props.callbackShowLevel(i) }} key={i} color={color} disabled={disable}>{i + 1}</Button>
+          return <Button sx={Styles.Text} onClick={() => {
+            context && (i - 1 <= range.length ?
+              (props.answers[i].isCorrect ?
+                context.setBackground("/background/smile.png") :
+                context.setBackground("/background/discontent.png")
+              ) : context.setBackground("/background/interested.png")
+            )//
+            props.callbackShowLevel(i)
+          }} key={i} color={color} disabled={disable}>{i + 1}</Button>
         }
       )
     }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { QuestionMulti } from "../../novella/novellaInterrface"
 import React from 'react';
 import { AnswerMulti } from "../AnswerType";
@@ -6,7 +6,7 @@ import { Button, Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/
 import { Styles } from "../button-level/button.style";
 import { padding } from "@mui/system";
 import { PropaneSharp } from "@mui/icons-material";
-
+import { Context } from "./context";
 interface MultiProps {
     question: QuestionMulti
     callbackFinish?: (answer: AnswerMulti) => void
@@ -28,6 +28,7 @@ export function Multi(props: MultiProps) {
     const [answer, setAnswer] = useState<AnswerMulti>()
     const [lock, setLock] = useState(true)
     const [check, setCheck] = useState(new Array(props.question.answers.length).fill(false))
+    const context = useContext(Context)//
     let correct: boolean[] = new Array(props.question.answers.length).fill(false)
     useEffect(() => {
         props.show && props.answer && setComment(props.answer.comment)
@@ -62,6 +63,7 @@ export function Multi(props: MultiProps) {
                 disabled={props.show === undefined || props.show === false ? lock : props.show}
                 variant='contained'
                 onClick={() => {
+                    setLock(true)
                     let userAnswers: string[] = [];
                     let comments: string[] = [];
                     props.question.answers.map(
@@ -76,8 +78,8 @@ export function Multi(props: MultiProps) {
                     // comments = doSmth(comments)/* */
                     setComment((old) => [...old, ...comments])
                     const answer: AnswerMulti = { isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: userAnswers, comment: comments }
-                    setAnswer(answer)
-                    comments.length <= 0 && props.callbackFinish && props.callbackFinish(answer)
+                    context && (answer.isCorrect ? context.setBackground("/background/smile.png") : context.setBackground("/background/discontent.png"))//
+                    comments.length <= 0 ? ((context && context.setBackground("/background/interested.png")), (props.callbackFinish && props.callbackFinish(answer))) : setAnswer(answer)
                     // comments.length <= 0 ? props.callbackFinish && props.callbackFinish(answer) && setAnswer(undefined) : ''
                 }}
             >
@@ -92,6 +94,7 @@ export function Multi(props: MultiProps) {
                     () => {
                         setLock(true)
                         setComment([])
+                        context && context.setBackground("/background/interested.png")
                         props.callbackFinish && props.callbackFinish(answer)
                         setAnswer(undefined)
                     }
