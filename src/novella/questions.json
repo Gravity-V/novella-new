@@ -399,7 +399,7 @@
         ]
     },
     {
-        "type":"multi",
+        "type":"standart",
         "background":"./components/images/background.jpg",
         "text": "Влияние на собеседника формируется при взаимодействии основных коммуникационых каналов, выберите какие?",
         "answers": [

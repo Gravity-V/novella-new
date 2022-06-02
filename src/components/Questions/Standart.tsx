@@ -22,6 +22,14 @@ export function Standart(props: StandartProps) {
 
     return <>
         <div className="box"  >
+            <div className="question">
+                {!(answer || props.show) && props.question.text}
+                {(answer || props.show) && <ThemeProvider key={'i'} theme={getTheme2(props.answer ? true : false)}>
+                    <Typography sx={Styles.TextComment} key={props.question.text}>
+                        {answer ? comment : props.show && props.answer ? props.answer.comment : ""}
+                    </Typography>
+                </ThemeProvider>}
+            </div>
             <div className="Standart">
                 <div className="answer">
                     {props.question.answers.map(
@@ -56,14 +64,6 @@ export function Standart(props: StandartProps) {
                         Далее
                     </Button>}
                 </div>
-            </div>
-            <div className="question">
-                {!(answer || props.show) && props.question.text}
-                {(answer || props.show) && <ThemeProvider key={'i'} theme={getTheme2(props.answer ? true : false)}>
-                    <Typography sx={Styles.TextComment} key={props.question.text}>
-                        {answer ? comment : props.show && props.answer ? props.answer.comment : ""}
-                    </Typography>
-                </ThemeProvider>}
             </div>
         </div>
     </>

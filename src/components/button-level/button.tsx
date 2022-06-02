@@ -26,12 +26,15 @@ export function ButtonLevel(props: ButtonLevelProps) {
           const color = props.answers[i] ? (props.answers[i].isCorrect ? 'success' : 'error') : 'primary';
 
           return <Button sx={Styles.Text} onClick={() => {
-            context && (i - 1 <= range.length ?
-              (props.answers[i].isCorrect ?
+            console.log(props.answers[i])
+
+            if (props.answers[i] != undefined) {
+              context && (props.answers[i].isCorrect ?
                 context.setBackground("/background/smile.png") :
                 context.setBackground("/background/discontent.png")
-              ) : context.setBackground("/background/interested.png")
-            )//
+              )
+            } else { context && context.setBackground("/background/interested.png") }
+
             props.callbackShowLevel(i)
           }} key={i} color={color} disabled={disable}>{i + 1}</Button>
         }
