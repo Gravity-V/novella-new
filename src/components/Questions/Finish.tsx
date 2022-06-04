@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import React from 'react';
 import { Answer } from '../AnswerType';
 import { Context } from "./context";
+import { Button } from "@mui/material";
 interface FinishProps {
     answers?: Answer[]
 }
@@ -15,6 +16,7 @@ export function Finish(props: FinishProps) {
                 {console.log(answer)}
                 {(answer) ? "Поздравляем! Вы ОЛТЕРНОТИВНА АДОРЕНЫЙ" : "Поздравляем! Вы идеально прошли тест."}
                 {context && (answer ? context.setBackground("/background/breakdown.png") : context.setBackground("/background/smile.png"))}
+                <Button onClick={() => { location.reload() }}>Ещё раз?</Button>
             </div>
         </div>
     </>
