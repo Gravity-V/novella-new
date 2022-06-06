@@ -67,7 +67,7 @@ export const Icons = () => {
 
 export const Styles = {
   Text: {
-    fontSize: 20
+    fontSize: 16
   },
   TextComment: {
     fontSize: 20

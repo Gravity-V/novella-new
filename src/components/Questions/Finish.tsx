@@ -14,9 +14,9 @@ export function Finish(props: FinishProps) {
         <div style={{ height: "100%", width: "100%", display: "flex", alignItems: "center", alignContent: "center", justifyContent: "center", overflow: "auto" }}>
             <div style={{ textAlign: "center", fontSize: "25px", padding: "15px", backgroundColor: "rgb(202, 240, 255)", borderRadius: "20px", width: "50%" }}>
                 {console.log(answer)}
-                {(answer) ? "Поздравляем! Вы ОЛТЕРНОТИВНА АДОРЕНЫЙ" : "Поздравляем! Вы идеально прошли тест."}
+                {(answer) ? "Поздравляем! Вы ОЛТЕРНОТИВНА АДОРЕНЫЙ  " : "Поздравляем! Вы идеально прошли тест.  "}
                 {context && (answer ? context.setBackground("/background/breakdown.png") : context.setBackground("/background/smile.png"))}
-                <Button onClick={() => { location.reload() }}>Ещё раз?</Button>
+                <Button variant="outlined" style={{color: 'black', border: 'dotted', fontSize: '16px'}} onClick={() => { location.reload() }}>Ещё раз?</Button>
             </div>
         </div>
     </>
