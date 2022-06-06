@@ -25,7 +25,7 @@ function App() {
   return ( //почему именно так?
     <Context.Provider value={{ setBackground }}>
       <div className="App">
-        <div className='middle' style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover", backgroundPosition: "center" }} >
+        <div className='middle' style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover"}} >
           <Container sx={Styles.ProgressBar} maxWidth='lg'>
             <div className='top'>
               <ButtonLevel answers={answers} totalLevel={questions.length}

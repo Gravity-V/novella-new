@@ -43,12 +43,34 @@ export const getTheme2 = (correct: boolean) => {
   return theme
 }
 
+export const Icons = () => {
+  const theme = createTheme({
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            "&.MuiButtonBase": {
+              minWight: '20px',
+              color: 'rgb(0, 0, 0)',
+            },
+            "&.MuiListItemIcon": {
+              minWight: '20px',
+              color: 'rgb(0, 0, 0)',
+            }
+          }
+        }
+      }
+    }
+  });
+  return theme
+}
+
 export const Styles = {
   Text: {
-    fontSize: 16
+    fontSize: 20
   },
   TextComment: {
-    fontSize: 22
+    fontSize: 20
   },
   Multi: {
     fontSize: 20,
@@ -91,5 +113,10 @@ export const Styles = {
     backgroundColor: '#0063cc',
     borderColor: '#0063cc',
     color: '#ffffff'
+  },
+  OrderButton:{
+    // marginTop: '4%', 
+    marginLeft: '40%', 
+    marginRight: '40%' 
   }
 }

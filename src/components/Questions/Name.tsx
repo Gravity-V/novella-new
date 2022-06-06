@@ -17,7 +17,7 @@ export function Name(props: NameProps) {
     return <>
         <div className='name'>
             <p className="text">{props.question.text}</p>
-            <div style={{ backgroundColor: 'rgb(232 240 254)', padding: '20px', width: '40%', marginBottom: '20px' }}>
+            <div className="backName">
                 <TextField sx={Styles.Name}
                     id="standard-basic"
                     label="ФИО"
