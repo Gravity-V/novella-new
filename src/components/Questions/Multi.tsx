@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { QuestionMulti } from "../../novella/novellaInterrface"
 import React from 'react';
 import { AnswerMulti } from "../AnswerType";
-import { Button, Checkbox, FormControlLabel, FormGroup, ListItemIcon, ThemeProvider, Typography } from "@mui/material";
-import { getTheme3, Styles } from "../button-level/button.style";
+import { Button, Checkbox, FormControlLabel, FormGroup, IconButton, ListItemIcon, ThemeProvider, Typography } from "@mui/material";
+import { getTheme4, Styles } from "../button-level/button.style";
 import { Context } from "./context";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -12,15 +12,6 @@ interface MultiProps {
     callbackFinish?: (answer: AnswerMulti) => void
     show?: boolean
     answer?: AnswerMulti
-}
-
-function doSmth(a: string[]): string[] {
-    for (var q = 1, i = 1; q < a.length; ++q) {
-        if (a[q] !== a[q - 1]) {
-            a[i++] = a[q];
-        }
-    }
-    return a;
 }
 
 function TEXT(correct: boolean[], check: boolean[]) {
@@ -76,19 +67,13 @@ export function Multi(props: MultiProps) {
                     // (answer || props.show) && comment.map((com, i) => <Typography key={i}>{com}</Typography>)
                     (answer || props.show) &&
                     <Typography sx={Styles.CommentMulty}>
-                        <Button onClick={() => { commentNember != 0 ? setCommentNember(commentNember - 1) : true }}>
-                            <ThemeProvider theme={getTheme3} />
-                            <ListItemIcon >
-                                <ArrowBackIcon/>
-                            </ListItemIcon>
-                        </Button>
+                        <IconButton onClick={() => { commentNember != 0 ? setCommentNember(commentNember - 1) : true }}>
+                            <ArrowBackIcon />
+                        </IconButton>
                         {comment[commentNember]}
-                        <Button onClick={() => { commentNember < comment.length - 1 ? setCommentNember(commentNember + 1) : true }}>
-                            <ThemeProvider theme={getTheme3} />
-                            <ListItemIcon>
-                                <ArrowForwardIcon/>
-                            </ListItemIcon>
-                        </Button>
+                        <IconButton onClick={() => { commentNember < comment.length - 1 ? setCommentNember(commentNember + 1) : true }}>
+                            <ArrowForwardIcon />
+                        </IconButton>
                     </Typography>
                 }
             </div>
@@ -99,17 +84,20 @@ export function Multi(props: MultiProps) {
                     {props.question.answers.map(
                         (answer, i) => {
                             return <div key={answer.text} style={{ backgroundColor: "rgba(0, 99, 204, 1)", paddingLeft: "1%", paddingRight: "1%", margin: 5, width: "97%" }}>
-                                <FormControlLabel style={{ width: "100%" }}
-                                    disabled={disabled}
-                                    control={
-                                        <Checkbox style={{ color: "white" }} defaultChecked={props.answer != undefined && props.answer.userAnswers.includes(answer.text)} />
-                                    }
-                                    onChange={() => {
-                                        setCheck((old) => { old[i] = !old[i]; return old });
-                                        setLock(false)
-                                    }}
-                                    label={answer.text}
-                                />
+                                <ThemeProvider theme={getTheme4()}>
+                                    <FormControlLabel
+                                        style={{ width: "100%" }}
+                                        disabled={disabled}
+                                        control={
+                                            <Checkbox style={{ color: "white" }} defaultChecked={props.answer != undefined && props.answer.userAnswers.includes(answer.text)} />
+                                        }
+                                        onChange={() => {
+                                            setCheck((old) => { old[i] = !old[i]; return old });
+                                            setLock(false)
+                                        }}
+                                        label={answer.text}
+                                    />
+                                </ThemeProvider>
                                 {correct[i] = answer.isCorrect}
                             </div>
                         }
@@ -151,7 +139,7 @@ export function Multi(props: MultiProps) {
         }
         {
             answer && <Button
-                style={{ width: '160px', alignSelf: 'center' }}
+                style={{ width: '160px', alignSelf: 'center', marginBottom: '3%' }}
                 variant='contained'
                 onClick={
                     () => {

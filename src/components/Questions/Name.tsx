@@ -16,7 +16,7 @@ export function Name(props: NameProps) {
     const [name, setName] = useState('');
     return <>
         <div className='name'>
-            <p className="text">{props.question.text}</p>
+            <div style={{marginTop: '6%'}}><p className="text">{props.question.text}</p></div>
             <div className="backName">
                 <TextField sx={Styles.Name}
                     id="standard-basic"

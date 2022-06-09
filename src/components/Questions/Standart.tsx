@@ -5,7 +5,6 @@ import { AnswerStandart } from "../AnswerType";
 import { Styles, getTheme, getTheme2 } from "../button-level/button.style";
 import './Style.css';
 import { Context } from "./context";
-import { Style } from "@mui/icons-material";
 
 interface StandartProps {
     question: QuestionStandart
@@ -40,7 +39,7 @@ export function Standart(props: StandartProps) {
                             (answer, i) => <ThemeProvider key={i}
                                 theme={getTheme(props.answer ? props.answer.isCorrect : answer.isCorrect, clic != undefined ? clic == i : (props.answer != undefined ? (props.answer.userAnswer == answer.text) : false))}>
                                 <Button sx={Styles.Standart}
-                                    variant="outlined"
+                                    variant="contained"
                                     disabled={props.show === undefined || props.show === false ? lock : props.show}
                                     color={props.answer ? (props.answer.userAnswer == answer.text ? 'secondary' : 'primary') : 'primary'}
                                     onClick={() => {

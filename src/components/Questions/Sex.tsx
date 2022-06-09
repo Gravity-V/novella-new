@@ -17,8 +17,8 @@ interface SexProps {
 export function Sex(props: SexProps) {
     return <>
         <div className='name'>
-            <div style={{marginTop: 100, marginRight: 30}}>
-            <p className="text">{props.question.text}</p>
+            <div style={{ marginTop: '6%'}}>
+                <p className="text">{props.question.text}</p>
             </div>
             <div>
                 <Button sx={Styles.Sex}
@@ -26,13 +26,13 @@ export function Sex(props: SexProps) {
                     color={props.answer ? (props.answer.sex == 'male' ? 'secondary' : 'primary') : 'primary'}
                     disabled={props.show}
                     onClick={() => { props.callbackFinish && props.callbackFinish({ isCorrect: true, type: 'sex', sex: 'male' }) }}
-                ><ManIcon sx={{color: 'white', fontSize: '50px'}}/></Button>
+                ><ManIcon sx={{ color: 'white', fontSize: '50px' }} /></Button>
                 <Button sx={Styles.Sex}
-                    variant="contained"  
+                    variant="contained"
                     color={props.answer ? (props.answer.sex == 'female' ? 'secondary' : 'primary') : 'primary'}
                     disabled={props.show}
                     onClick={() => { props.callbackFinish && props.callbackFinish({ isCorrect: true, type: 'sex', sex: 'female' }) }}
-                ><WomanIcon sx={{color: 'white', fontSize: '50px'}}/></Button>
+                ><WomanIcon sx={{ color: 'white', fontSize: '50px' }} /></Button>
             </div>
         </div>
     </>

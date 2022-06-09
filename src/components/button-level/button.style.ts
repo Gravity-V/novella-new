@@ -59,6 +59,25 @@ export const getTheme3 = () => {
   return theme
 }
 
+export const getTheme4 = () => {
+  const theme = createTheme({
+    components: {
+      MuiFormControlLabel: {
+        styleOverrides: {
+          label: {
+            root: {
+              "&.Mui-disabled": {
+                color: 'white'
+              }
+            }
+          }
+        }
+      },
+    },
+  });
+  return theme
+}
+
 export const Styles = {
   Text: {
     fontSize: 16
@@ -106,7 +125,10 @@ export const Styles = {
     lineHeight: 1.5,
     backgroundColor: '#0063cc',
     borderColor: '#0063cc',
-    color: '#ffffff'
+    color: '#ffffff',
+    '&:hover': {
+      backgroundColor: 'rgba(25,118,210,0.6)'
+    }
   },
   OrderButton: {
     // marginTop: '4%', 
@@ -116,5 +138,15 @@ export const Styles = {
   CommentMulty: {
     display: 'flex',
     fontSize: 20,
+    alignItems: 'center',
+    gap: '10px',
+  },
+  First: {
+    fontSize: '40px',
+  },
+  Multy2: {
+    '&:disabled': {
+      color: 'white'
+    }
   }
 }

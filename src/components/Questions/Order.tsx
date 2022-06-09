@@ -81,10 +81,10 @@ export function Order(props: OrderProps) {
 
     return <>
         <div className='box'>
-            <div className="standartposition" style={{height: '39%'}}>
+            <div className="standartposition" style={{height: '44%'}}>
                 <p className='question'>{props.question.text}</p>
             </div>
-            <div className="standartposition" style={{height: '47%'}}>
+            <div className="standartposition" style={{height: '43%', justifyContent: 'end'}}>
                 <div className='OrderBlock' style={{marginTop: '4%'}}>
                     {<img src={props.question.background} />}
                     <DragDropContext onDragEnd={onDragEnd}>
