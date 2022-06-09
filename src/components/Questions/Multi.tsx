@@ -25,39 +25,6 @@ function doSmth(a: string[]): string[] {
 
 function TEXT(correct: boolean[], check: boolean[]) {
 
-    // comment.unshift('совершенно верно')
-    // comment.unshift('очень плохо')
-    // comment.unshift('Верно, но это не всё')
-    // comment.unshift('Почти верно') //все правельные + ошибка
-    // comment.unshift('это не совсем правильно') //не все правельные + ошибка
-
-    // correct.filter(function (x: boolean) { return x == true }).length
-
-    // if (correct.length == check) {
-
-    //     if (correct.includes(true))
-    //         if (correct.includes(false))
-    //             comment.unshift('это не совсем правильно 1') //не все правельные + ошибка
-    //         else comment.unshift('совершенно верно')
-    //     else comment.unshift('очень плохо 1')
-
-    // } else if (correct.length < check) {
-
-    //     if (correct.includes(true))
-    //         if (correct.includes(false))
-    //             comment.unshift('это не совсем правильно 2') //не все правельные + ошибка
-    //         else comment.unshift('Верно, но это не всё')
-    //     else comment.unshift('очень плохо 2')
-
-    // } else {
-
-    //     if (correct.includes(true))
-    //         if (correct.filter(function (x: boolean) { return x == true }).length == check)
-    //             comment.unshift('Почти верно') //все правельные + ошибка
-    //         else comment.unshift('это не совсем правильно 3') //не все правельные + ошибка
-    //     else comment.unshift('очень плохо 3')
-
-    // }
 
     let True = 0, False = 0, numberFalse: number[] = []
 
@@ -150,57 +117,57 @@ export function Multi(props: MultiProps) {
                 </FormGroup>
             </div>
         </div>
-        <div className="standartposition" style={{ height: '4%' }}>
-            {
-                answer === undefined && <Button
-                    style={{ width: '200px', alignSelf: 'center', marginBottom: '5%' }}
-                    disabled={props.show === undefined || props.show === false ? lock : props.show}
-                    variant='contained'
-                    onClick={() => {
+        {
+            answer === undefined && <Button
+                style={{ width: '200px', alignSelf: 'center' }}
+                disabled={props.show === undefined || props.show === false ? lock : props.show}
+                variant='contained'
+                onClick={() => {
 
-                        setDisabled(true)
-                        setLock(true)
-                        let userAnswers: string[] = [];
-                        let comments: string[] = [];
-                        props.question.answers.map(
-                            (answer, i) => {
-                                check[i] && userAnswers.push(answer.text)
-                                // comments.map((_, a)=> {comments != undefined ? comments[a] == answer.comment ? check[i] && answer.comment !== undefined && comments.push(answer.comment) : "" : "EROR" })
-                                // check[i] && answer.comment !== undefined && comments.push(answer.comment)
-                                check[i] && answer.comment !== undefined && !comments.includes(answer.comment) && comments.push(answer.comment)
-                            }
-                        )
-                        // console.log(comments);
-                        // comments = doSmth(comments)/* */
-                        comments.unshift(TEXT(correct, check))
-                        setComment((old) => [...old, ...comments])
-                        const answer: AnswerMulti = { isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: userAnswers, comment: comments }
-                        context && (answer.isCorrect ? context.setBackground("/background/smile.png") : context.setBackground("/background/discontent.png"))//
-                        comments.length <= 0 ? ((context && context.setBackground("/background/interested.png")), (props.callbackFinish && props.callbackFinish(answer))) : setAnswer(answer) //переделай
-                        // comments.length <= 0 ? props.callbackFinish && props.callbackFinish(answer) && setAnswer(undefined) : ''
-                    }}
-                >
-                    Подтверждаю
-                </Button>
-            }
-            {
-                answer && <Button
-                    style={{ width: '160px', alignSelf: 'center', marginBottom: '5%' }}
-                    variant='contained'
-                    onClick={
-                        () => {
-                            setDisabled(false)
-                            setLock(true)
-                            setComment([])
-                            context && context.setBackground("/background/interested.png")
-                            props.callbackFinish && props.callbackFinish(answer)
-                            setAnswer(undefined)
+                    setDisabled(true)
+                    setLock(true)
+                    let userAnswers: string[] = [];
+                    let comments: string[] = [];
+                    props.question.answers.map(
+                        (answer, i) => {
+                            check[i] && userAnswers.push(answer.text)
+                            // comments.map((_, a)=> {comments != undefined ? comments[a] == answer.comment ? check[i] && answer.comment !== undefined && comments.push(answer.comment) : "" : "EROR" })
+                            // check[i] && answer.comment !== undefined && comments.push(answer.comment)
+                            check[i] && answer.comment !== undefined && !comments.includes(answer.comment) && comments.push(answer.comment)
                         }
+                    )
+                    // console.log(comments);
+                    // comments = doSmth(comments)/* */
+                    comments.unshift(TEXT(correct, check))
+                    setComment((old) => [...old, ...comments])
+                    const answer: AnswerMulti = { isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: userAnswers, comment: comments }
+                    context && (answer.isCorrect ? context.setBackground("/background/smile.png") : context.setBackground("/background/discontent.png"))//
+                    comments.length <= 0 ? ((context && context.setBackground("/background/interested.png")), (props.callbackFinish && props.callbackFinish(answer))) : setAnswer(answer) //переделай
+                    // comments.length <= 0 ? props.callbackFinish && props.callbackFinish(answer) && setAnswer(undefined) : ''
+                }}
+            >
+                Подтверждаю
+            </Button>
+        }
+        {
+            answer && <Button
+                style={{ width: '160px', alignSelf: 'center' }}
+                variant='contained'
+                onClick={
+                    () => {
+                        setDisabled(false)
+                        setLock(true)
+                        setComment([])
+                        correct = []
+                        setCheck([])
+                        context && context.setBackground("/background/interested.png")
+                        props.callbackFinish && props.callbackFinish(answer)
+                        setAnswer(undefined)
                     }
-                >
-                    Далее
-                </Button>
-            }
-        </div>
+                }
+            >
+                Далее
+            </Button>
+        }
     </>
 }
