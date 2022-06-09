@@ -16,8 +16,8 @@ export function Finish(props: FinishProps) {
                 {console.log(answer)}
                 {(answer) ? "Поздравляем! Вы ОЛТЕРНОТИВНА АДОРЕНЫЙ  " : "Поздравляем! Вы идеально прошли тест.  "}
                 {context && (answer ? context.setBackground("/background/breakdown.png") : context.setBackground("/background/smile.png"))}
-                <Button variant="outlined" style={{color: 'black', border: 'dotted', fontSize: '16px'}} onClick={() => { location.reload() }}>Ещё раз?</Button>
             </div>
+                <Button variant="outlined" style={{color: 'black', border: 'dotted', fontSize: '16px'}} onClick={() => { location.reload() }}>Ещё раз?</Button>
         </div>
     </>
 }

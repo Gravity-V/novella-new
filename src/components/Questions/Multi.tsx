@@ -3,13 +3,10 @@ import { QuestionMulti } from "../../novella/novellaInterrface"
 import React from 'react';
 import { AnswerMulti } from "../AnswerType";
 import { Button, Checkbox, FormControlLabel, FormGroup, ListItemIcon, ThemeProvider, Typography } from "@mui/material";
-import { Icons } from "../button-level/button.style";
-import { padding } from "@mui/system";
-import { PropaneSharp } from "@mui/icons-material";
+import { getTheme3, Styles } from "../button-level/button.style";
 import { Context } from "./context";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { request } from "https";
 interface MultiProps {
     question: QuestionMulti
     callbackFinish?: (answer: AnswerMulti) => void
@@ -111,20 +108,18 @@ export function Multi(props: MultiProps) {
                 {
                     // (answer || props.show) && comment.map((com, i) => <Typography key={i}>{com}</Typography>)
                     (answer || props.show) &&
-                    <Typography style={{ fontSize: '20' }}>
+                    <Typography sx={Styles.CommentMulty}>
                         <Button onClick={() => { commentNember != 0 ? setCommentNember(commentNember - 1) : true }}>
-                            <ListItemIcon>
-                                <ThemeProvider theme={Icons()}>
-                                    <ArrowBackIcon />
-                                </ThemeProvider>
+                            <ThemeProvider theme={getTheme3} />
+                            <ListItemIcon >
+                                <ArrowBackIcon/>
                             </ListItemIcon>
                         </Button>
                         {comment[commentNember]}
                         <Button onClick={() => { commentNember < comment.length - 1 ? setCommentNember(commentNember + 1) : true }}>
+                            <ThemeProvider theme={getTheme3} />
                             <ListItemIcon>
-                                <ThemeProvider theme={Icons()}>
-                                    <ArrowForwardIcon />
-                                </ThemeProvider>
+                                <ArrowForwardIcon/>
                             </ListItemIcon>
                         </Button>
                     </Typography>

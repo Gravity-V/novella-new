@@ -4,6 +4,8 @@ import React from 'react';
 import { AnswerSex } from "../AnswerType";
 import './Style.css';
 import { Styles } from "../button-level/button.style";
+import WomanIcon from '@mui/icons-material/Woman';
+import ManIcon from '@mui/icons-material/Man';
 
 interface SexProps {
     question: QuestionSex
@@ -24,13 +26,13 @@ export function Sex(props: SexProps) {
                     color={props.answer ? (props.answer.sex == 'male' ? 'secondary' : 'primary') : 'primary'}
                     disabled={props.show}
                     onClick={() => { props.callbackFinish && props.callbackFinish({ isCorrect: true, type: 'sex', sex: 'male' }) }}
-                >М</Button>
+                ><ManIcon sx={{color: 'white', fontSize: '50px'}}/></Button>
                 <Button sx={Styles.Sex}
                     variant="contained"  
                     color={props.answer ? (props.answer.sex == 'female' ? 'secondary' : 'primary') : 'primary'}
                     disabled={props.show}
                     onClick={() => { props.callbackFinish && props.callbackFinish({ isCorrect: true, type: 'sex', sex: 'female' }) }}
-                >Ж</Button>
+                ><WomanIcon sx={{color: 'white', fontSize: '50px'}}/></Button>
             </div>
         </div>
     </>

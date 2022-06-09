@@ -15,7 +15,7 @@ export const getTheme = (correct: boolean, clic: boolean) => {
         styleOverrides: {
           root: {
             "&.Mui-disabled": {
-              color:clic? (correct ? 'green' : 'red'):'',
+              color: clic ? (correct ? 'green' : 'red') : '',
               backgroundColor: 'rgba(100, 100, 100, 0.25)'
             }
           }
@@ -33,7 +33,7 @@ export const getTheme2 = (correct: boolean) => {
         styleOverrides: {
           root: {
             "&.Mui-disabled": {
-              visibility: correct ?"hidden": "visible"
+              visibility: correct ? "hidden" : "visible"
             }
           }
         }
@@ -43,24 +43,18 @@ export const getTheme2 = (correct: boolean) => {
   return theme
 }
 
-export const Icons = () => {
+export const getTheme3 = () => {
   const theme = createTheme({
     components: {
-      MuiButton: {
+      MuiIcon: {
         styleOverrides: {
           root: {
-            "&.MuiButtonBase": {
-              minWight: '20px',
-              color: 'rgb(0, 0, 0)',
-            },
-            "&.MuiListItemIcon": {
-              minWight: '20px',
-              color: 'rgb(0, 0, 0)',
-            }
+            minWidth: '20px',
+            color: 'Black'
           }
         }
-      }
-    }
+      },
+    },
   });
   return theme
 }
@@ -92,7 +86,7 @@ export const Styles = {
     marginLeft: 11,
     marginRight: 11,
     marginTop: 1,
-    marginBottom: 11 
+    marginBottom: 11
   },
   Name: {
     width: '100%',
@@ -114,9 +108,13 @@ export const Styles = {
     borderColor: '#0063cc',
     color: '#ffffff'
   },
-  OrderButton:{
+  OrderButton: {
     // marginTop: '4%', 
-    marginLeft: '40%', 
-    marginRight: '40%' 
+    marginLeft: '40%',
+    marginRight: '40%'
+  },
+  CommentMulty: {
+    display: 'flex',
+    fontSize: 20,
   }
 }
