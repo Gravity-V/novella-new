@@ -26,23 +26,6 @@ export const getTheme = (correct: boolean, clic: boolean) => {
   return theme
 }
 
-export const getTheme2 = (correct: boolean) => {
-  const theme = createTheme({
-    components: {
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            "&.Mui-disabled": {
-              visibility: correct ? "hidden" : "visible"
-            }
-          }
-        }
-      }
-    }
-  });
-  return theme
-}
-
 export const getTheme3 = () => {
   const theme = createTheme({
     components: {
@@ -59,17 +42,15 @@ export const getTheme3 = () => {
   return theme
 }
 
-export const getTheme4 = () => {
+export const getTheme4 = (correct: boolean, clic: boolean) => {
   const theme = createTheme({
     components: {
       MuiFormControlLabel: {
         styleOverrides: {
           label: {
-            root: {
               "&.Mui-disabled": {
-                color: 'white'
+                color: clic ? (correct ? 'green' : 'red') : '',
               }
-            }
           }
         }
       },
@@ -140,9 +121,14 @@ export const Styles = {
     fontSize: 20,
     alignItems: 'center',
     gap: '10px',
+    '&MuiIcon':{
+      color: 'Black'
+    }
   },
   First: {
     fontSize: '40px',
+    borderRadius: '13px', 
+    backgroundColor: "rgb(25, 118, 210, 0.5)"
   },
   Multy2: {
     '&:disabled': {

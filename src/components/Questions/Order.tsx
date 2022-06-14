@@ -22,12 +22,13 @@ class Item {
     }
 }
 
-const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
+const getItemStyle = (ek: number, isDragging: boolean, draggableStyle: any) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: "none",
     padding: 6,
     maxHeight: "64px",
     borderRadius: '6px',
+    // {(ek < 3)} ? marginBottom: '8px': marginBottom: '0px',
     marginBottom: '8px',
     cursor: 'pointer',
     boxShadow: '0 2px 0 #091e4240',
@@ -44,7 +45,7 @@ const getListStyle = (isDraggingOver: boolean) => ({
     background: "lightgrey",
     borderRadius: '6px',
     padding: 6,
-    height: "201px"
+    // height: "201px"
 });
 
 export function Order(props: OrderProps) {
@@ -81,52 +82,54 @@ export function Order(props: OrderProps) {
 
     return <>
         <div className='box'>
-            <div className="standartposition" style={{height: '44%'}}>
+            <div className="standartposition" style={{ height: '44%' }}>
                 <p className='question'>{props.question.text}</p>
             </div>
-            <div className="standartposition" style={{height: '43%', justifyContent: 'end'}}>
-                <div className='OrderBlock' style={{marginTop: '4%'}}>
-                    {<img src={props.question.background} />}
-                    <DragDropContext onDragEnd={onDragEnd}>
-                        <div style={{ height: "200px", width: "80vw" }}>
-                            <Droppable droppableId='ksfsdkaj'>
-                                {(provider, snapshot) => (
-                                    <List
-                                        {...provider.droppableProps}
-                                        ref={provider.innerRef}
-                                        style={getListStyle(snapshot.isDraggingOver)}
-                                    >
-                                        {dragElems.map((e, i) =>
-                                            <Draggable isDragDisabled={props.show} key={e.key} draggableId={e.key.toString()} index={i}>
-                                                {
-                                                    (provider, snapshot) => (
-                                                        <ListItem
-                                                            key={e.key}
-                                                            ref={provider.innerRef}
-                                                            {...provider.draggableProps}
-                                                            {...provider.dragHandleProps}
-                                                            style={getItemStyle(
-                                                                snapshot.isDragging,
-                                                                provider.draggableProps.style)}
-                                                        >
-                                                            <ListItemIcon>
-                                                                <DragHandle />
-                                                            </ListItemIcon>
-                                                            <ListItemText primary={e.text} style={{ color: 'rgb(255,255,255)' }} />
-                                                        </ListItem>
-                                                    )
-                                                }
-                                            </Draggable>
-                                        )}
-                                    </List>
-                                )}
-                            </Droppable>
-                        </div>
-                    </DragDropContext>
+            <div className="standartposition" style={{ height: '43%', justifyContent: 'end' }}>
+                {/* <div className='OrderBlock' style={{marginTop: '4%'}}> */}
+                {<img src={props.question.background} />}
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <div style={{ height: "200px", width: "80vw" }}>
+                        <Droppable droppableId='ksfsdkaj'>
+                            {(provider, snapshot) => (
+                                <List
+                                    {...provider.droppableProps}
+                                    ref={provider.innerRef}
+                                    style={getListStyle(snapshot.isDraggingOver)}
+                                >
+                                    {dragElems.map((e, i) =>
+                                        <Draggable isDragDisabled={props.show} key={e.key} draggableId={e.key.toString()} index={i}>
+                                            {
+                                                (provider, snapshot) => (
+                                                    <ListItem
+                                                        key={e.key}
+                                                        ref={provider.innerRef}
+                                                        {...provider.draggableProps}
+                                                        {...provider.dragHandleProps}
+                                                        style={getItemStyle(
+                                                            e.key,
+                                                            snapshot.isDragging,
+                                                            provider.draggableProps.style)}
+                                                    >
+                                                        <ListItemIcon>
+                                                            <DragHandle />
+                                                        </ListItemIcon>
+                                                        <ListItemText primary={e.text} style={{ color: 'rgb(255,255,255)' }} />
+                                                    </ListItem>
+                                                )
+                                            }
+                                        </Draggable>
+                                    )}
+                                    {provider.placeholder}
+                                </List>
+                            )}
+                        </Droppable>
+                    </div>
+                </DragDropContext>
 
-                </div>
+                {/* x</div> */}
             </div>
-            <div className="standartposition" style={{marginTop: '2%'}}>
+            <div className="standartposition" style={{ marginTop: '2%' }}>
                 <Button
                     sx={Styles.OrderButton}
                     variant='contained'

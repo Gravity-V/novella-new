@@ -53,6 +53,7 @@ export function Multi(props: MultiProps) {
     const [lock, setLock] = useState(true)
     const [check, setCheck] = useState(new Array(props.question.answers.length).fill(false))
     const [disabled, setDisabled] = useState(props.show === undefined || props.show === false ? false : true)
+    const [clic, setClic] = useState<number>()
     const context = useContext(Context)//
     const [commentNember, setCommentNember] = useState(0)
     let correct: boolean[] = new Array(props.question.answers.length).fill(false)
@@ -84,7 +85,7 @@ export function Multi(props: MultiProps) {
                     {props.question.answers.map(
                         (answer, i) => {
                             return <div key={answer.text} style={{ backgroundColor: "rgba(0, 99, 204, 1)", paddingLeft: "1%", paddingRight: "1%", margin: 5, width: "97%" }}>
-                                <ThemeProvider theme={getTheme4()}>
+                                <ThemeProvider theme={getTheme4(props.answer ? props.answer.isCorrect : answer.isCorrect, clic != undefined ? clic == i : false)}> {/* НЕ РАБОТАЕТ ИЗМЕНЕНИЕ ОТВЕТА ПО ЦВЕТУ*/}
                                     <FormControlLabel
                                         style={{ width: "100%" }}
                                         disabled={disabled}
@@ -107,7 +108,7 @@ export function Multi(props: MultiProps) {
         </div>
         {
             answer === undefined && <Button
-                style={{ width: '200px', alignSelf: 'center' }}
+                style={{ width: '200px', alignSelf: 'center', marginBottom: '3%' }}
                 disabled={props.show === undefined || props.show === false ? lock : props.show}
                 variant='contained'
                 onClick={() => {

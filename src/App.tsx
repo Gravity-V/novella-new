@@ -83,7 +83,7 @@ function App() {
     </Context.Provider>
   ) : (
     <div className='FirstPage'>
-      <div style={{fontSize: '24px'}}> Для более удобного просмотра теста рекомендуется проходить в полноэкранном режиме (F11)</div>
+      <div style={{fontSize: '30px'}}> Для более удобного просмотра теста рекомендуется проходить в полноэкранном режиме (F11)</div>
       <Button
         variant='contained'
         sx={Styles.First}
