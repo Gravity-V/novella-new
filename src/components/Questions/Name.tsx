@@ -16,7 +16,7 @@ export function Name(props: NameProps) {
     const [name, setName] = useState('');
     return <>
         <div className='name'>
-            <div style={{marginTop: '6%'}}><p className="text">{props.question.text}</p></div>
+            <div style={{ marginTop: '7%' }}><p className="text" style={{ backgroundImage: `url(${props.show ? '/cloud/Green.png' : '/cloud/White.png'})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover", backgroundPosition: "center" }}>{props.question.text}</p></div>
             <div className="backName">
                 <TextField sx={Styles.Name}
                     id="standard-basic"

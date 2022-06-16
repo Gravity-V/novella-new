@@ -2,7 +2,7 @@ import { Button, ThemeProvider, Typography } from "@mui/material"
 import { QuestionStandart } from "../../novella/novellaInterrface"
 import React, { useContext, useState } from 'react';
 import { AnswerStandart } from "../AnswerType";
-import { Styles, getTheme, getTheme2 } from "../button-level/button.style";
+import { Styles, getTheme } from "../button-level/button.style";
 import './Style.css';
 import { Context } from "./context";
 
@@ -19,20 +19,20 @@ export function Standart(props: StandartProps) {
     const [lock, setLock] = useState<boolean>(false)
     const [clic, setClic] = useState<number>()
     const context = useContext(Context)//
-
+    const [background, setBackground] = useState<string>(props.show ? (props.answer && props.answer.isCorrect ? '/cloud/Green.png' : '/cloud/Red.png') : '/cloud/White.png');
     return <>
         <div className="box">
-            <div className="standartposition" style={{height: '35%'}}>
-                <div className="question">
-                    {!(answer || props.show) && props.question.text}
-                    {(answer || props.show) && <ThemeProvider key={'i'} theme={getTheme2(props.answer ? true : false)}>
+            <div className="standartposition" style={{ height: '40%' }}>
+                <div className="question" style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover", backgroundPosition: "center" }}>
+
+                    {(answer || props.show) ?
                         <Typography sx={Styles.TextComment} key={props.question.text}>
                             {answer ? comment : props.show && props.answer ? props.answer.comment : ""}
-                        </Typography>
-                    </ThemeProvider>}
+                        </Typography> : props.question.text
+                    }
                 </div>
             </div>
-            <div className="standartposition" style={{height: '50%'}}>
+            <div className="standartposition" style={{ height: '45%' }}>
                 <div className="Standart">
                     <div className="answer">
                         {props.question.answers.map(
@@ -48,6 +48,7 @@ export function Standart(props: StandartProps) {
                                             setComment(answer.comment)
                                             context && (answer.isCorrect ? context.setBackground("/background/smile.png") : context.setBackground("/background/discontent.png"))//
                                             setAnswer({ isCorrect: answer.isCorrect, type: "standart", userAnswer: answer.text, comment: answer.comment })
+                                            answer.isCorrect ? setBackground('/cloud/Green.png') : setBackground('/cloud/Red.png')
                                         } else {
                                             props.callbackFinish && props.callbackFinish({ isCorrect: answer.isCorrect, type: "standart", userAnswer: answer.text, comment: '' })
                                         }
@@ -59,13 +60,14 @@ export function Standart(props: StandartProps) {
                     </div>
                 </div>
             </div>
-            <div className="standartposition" style={{marginTop: '2%'}}>
+            <div className="standartposition" style={{ marginTop: '2%' }}>
                 {answer && <Button
                     // sx={Styles.OrderButton}
                     variant="contained"
                     onClick={() => {
                         setLock(false)
                         context && context.setBackground("/background/interested.png")
+                        setBackground('/cloud/White.png')
                         props.callbackFinish && props.callbackFinish(answer)
                         setAnswer(undefined)
                     }}

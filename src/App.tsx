@@ -12,30 +12,6 @@ import { Context } from "./components/Questions/context";
 import { truncate } from 'fs';
 import { fontSize } from '@mui/system';
 
-// interface IContext {
-//   setBackground: Function
-// }
-
-// export const Context = createContext<IContext | null>(null)
-
-// export const getTheme = () => {
-//   const theme = createTheme({
-//     components: {
-//      MuiButton: {
-//        styleOverrides: {
-//          contained: {
-//            backgroundColor:'red',
-//           '&:hover': {
-//             backgroundColor: 'rgba(0,0,0)'
-//           },
-//          },
-//        },
-//      },
-//     },
-//   });
-//   return theme
-// }
-
 
 
 // подтягивает стили из style без импорта
@@ -83,7 +59,7 @@ function App() {
     </Context.Provider>
   ) : (
     <div className='FirstPage'>
-      <div style={{fontSize: '24px'}}> Для более удобного просмотра теста рекомендуется проходить в полноэкранном режиме (F11)</div>
+      <div style={{ fontSize: '30px' }}> Для более удобного просмотра теста рекомендуется проходить в полноэкранном режиме (F11)</div>
       <Button
         variant='contained'
         sx={Styles.First}

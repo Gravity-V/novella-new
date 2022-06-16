@@ -53,15 +53,17 @@ export function Multi(props: MultiProps) {
     const [lock, setLock] = useState(true)
     const [check, setCheck] = useState(new Array(props.question.answers.length).fill(false))
     const [disabled, setDisabled] = useState(props.show === undefined || props.show === false ? false : true)
+    const [clic, setClic] = useState<number>()
     const context = useContext(Context)//
     const [commentNember, setCommentNember] = useState(0)
+    const [background, setBackground] = useState<string>(props.show ? (props.answer && props.answer.isCorrect ? '/cloud/Green.png' : '/cloud/Red.png') : '/cloud/White.png');
     let correct: boolean[] = new Array(props.question.answers.length).fill(false)
     useEffect(() => {
         props.show && props.answer && setComment(props.answer.comment)
     })
     return <>
         <div className="standartposition" style={{ height: '10%' }}>
-            <div className="question" style={{ alignSelf: 'center' }}>
+            <div className="question" style={{ alignSelf: 'center', backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover", backgroundPosition: "center" }}>
                 {!(answer || props.show) && props.question.text}
                 {
                     // (answer || props.show) && comment.map((com, i) => <Typography key={i}>{com}</Typography>)
@@ -84,7 +86,7 @@ export function Multi(props: MultiProps) {
                     {props.question.answers.map(
                         (answer, i) => {
                             return <div key={answer.text} style={{ backgroundColor: "rgba(0, 99, 204, 1)", paddingLeft: "1%", paddingRight: "1%", margin: 5, width: "97%" }}>
-                                <ThemeProvider theme={getTheme4()}>
+                                <ThemeProvider theme={getTheme4(props.answer ? props.answer.isCorrect : answer.isCorrect, clic != undefined ? clic == i : false)}> {/* НЕ РАБОТАЕТ ИЗМЕНЕНИЕ ОТВЕТА ПО ЦВЕТУ*/}
                                     <FormControlLabel
                                         style={{ width: "100%" }}
                                         disabled={disabled}
@@ -107,7 +109,7 @@ export function Multi(props: MultiProps) {
         </div>
         {
             answer === undefined && <Button
-                style={{ width: '200px', alignSelf: 'center' }}
+                style={{ width: '200px', alignSelf: 'center', marginBottom: '3%' }}
                 disabled={props.show === undefined || props.show === false ? lock : props.show}
                 variant='contained'
                 onClick={() => {
@@ -130,6 +132,7 @@ export function Multi(props: MultiProps) {
                     setComment((old) => [...old, ...comments])
                     const answer: AnswerMulti = { isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: userAnswers, comment: comments }
                     context && (answer.isCorrect ? context.setBackground("/background/smile.png") : context.setBackground("/background/discontent.png"))//
+                    answer.isCorrect ? setBackground('/cloud/Green.png') : setBackground('/cloud/Red.png')
                     comments.length <= 0 ? ((context && context.setBackground("/background/interested.png")), (props.callbackFinish && props.callbackFinish(answer))) : setAnswer(answer) //переделай
                     // comments.length <= 0 ? props.callbackFinish && props.callbackFinish(answer) && setAnswer(undefined) : ''
                 }}
@@ -148,6 +151,7 @@ export function Multi(props: MultiProps) {
                         setComment([])
                         correct = []
                         setCheck([])
+                        setBackground('/cloud/White.png')
                         context && context.setBackground("/background/interested.png")
                         props.callbackFinish && props.callbackFinish(answer)
                         setAnswer(undefined)

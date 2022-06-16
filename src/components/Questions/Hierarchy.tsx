@@ -22,13 +22,14 @@ export function Hierarchy(props: HierarchyProps) {
                 (answer) => {
                     if (subquestion < props.question.questions.length - 1) {
                         answer.isCorrect && setSubquestion(subquestion + 1)
-                        if (!answer.isCorrect){
+                        if (!answer.isCorrect) {
                             answer.isCorrect = true;
                             props.callbackFinish && props.callbackFinish({ type: 'hierarchy', isCorrect: true, answer: answer, subQuestion: subquestion })
                         }
                     }
                     else {
                         props.callbackFinish && props.callbackFinish({ type: 'hierarchy', isCorrect: answer.isCorrect, answer: answer, subQuestion: subquestion })
+                        setSubquestion(0)
                     }
                 }
             }

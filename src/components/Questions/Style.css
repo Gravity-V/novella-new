@@ -111,3 +111,14 @@
     align-items: center;
     height: 100vh;
 }
+
+.EndPage{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    place-content: center;
+    overflow: auto;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
