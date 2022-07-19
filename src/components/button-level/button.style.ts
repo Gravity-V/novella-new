@@ -94,7 +94,8 @@ export const Styles = {
   ProgressBar: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    overflowX: 'auto'
   },
   Standart: {
     margin: '7px',
@@ -127,12 +128,23 @@ export const Styles = {
   },
   First: {
     fontSize: '40px',
+   
     borderRadius: '13px', 
     backgroundColor: "rgb(25, 118, 210, 0.5)"
   },
   Multy2: {
     '&:disabled': {
       color: 'white'
+    }
+  },
+  Balvanka:{
+    cursor: 'auto',
+    backgroundColor: '#0063cc00',
+    borderColor: '#0063cc00',
+    color: '#0063cc00',
+    '&:hover': {
+      backgroundColor: '#0063cc00',
+      borderColor: '#0063cc00'
     }
   }
 }

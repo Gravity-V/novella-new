@@ -10,6 +10,7 @@ export interface AnswerSex extends Answer {
     sex: 'male' | 'female'
 }
 export interface AnswerStandart extends Answer {
+    userNuberAnswers: number
     userAnswer: string
     comment: string
 }

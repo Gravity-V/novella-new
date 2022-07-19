@@ -30,10 +30,10 @@ export function ButtonLevel(props: ButtonLevelProps) {
 
             if (props.answers[i] != undefined) {
               context && (props.answers[i].isCorrect ?
-                context.setBackground("/background/smile.png") :
-                context.setBackground("/background/discontent.png")
+                context.setBackground("smile.png") :
+                context.setBackground("discontent.png")
               )
-            } else { context && context.setBackground("/background/interested.png") }
+            } else { context && context.setBackground("interested.png") }
 
             props.callbackShowLevel(i)
           }} key={i} color={color} disabled={disable}>{i + 1}</Button>

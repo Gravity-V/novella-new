@@ -18,7 +18,7 @@ export function Sex(props: SexProps) {
     return <>
         <div className='name'>
             <div style={{ marginTop: '6%' }}>
-                <p className="text" style={{ backgroundImage: `url(${props.show ? '/cloud/Green.png' : '/cloud/White.png'})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover", backgroundPosition: "center" }}>{props.question.text}</p>
+                {/* <p className="text" style={{ backgroundImage: `url(${props.show ? '/cloud/Green.png' : '/cloud/White.png'})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover", backgroundPosition: "center" }}>{props.question.text} </p> */}
             </div>
             <div>
                 <Button sx={Styles.Sex}
