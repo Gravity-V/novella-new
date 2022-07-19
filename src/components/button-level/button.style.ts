@@ -64,7 +64,7 @@ export const Styles = {
     fontSize: 16
   },
   TextComment: {
-    fontSize: 20
+    fontSize: 23
   },
   Multi: {
     fontSize: 20,

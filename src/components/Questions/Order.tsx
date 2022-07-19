@@ -1,8 +1,8 @@
-import { Button, FormControl, Icon, InputLabel, List, ListItem, ListItemIcon, ListItemText, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { Button, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { QuestionOrder } from '../../novella/novellaInterrface';
 import { AnswerOrder } from '../AnswerType';
-import { DragDropContext, Droppable, Draggable, DropResult, DraggingStyle, NotDraggingStyle } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
 import { DragHandle } from '@mui/icons-material';
 import { Styles } from "../button-level/button.style";
 

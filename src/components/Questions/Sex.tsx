@@ -17,10 +17,12 @@ interface SexProps {
 export function Sex(props: SexProps) {
     return <>
         <div className='name'>
-            <div style={{ marginTop: '6%' }}>
-                <p className="text" style={{ backgroundImage: `url(${props.show ? '/cloud/Green.png' : '/cloud/White.png'})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover", backgroundPosition: "center" }}>{props.question.text}</p>
+            <div className="positionsSex" style={{marginBottom: "9%"}}>
+                <div className='bubble' style={{ backgroundImage: `url(${props.show ? '/cloud/Green.png' : '/cloud/White.png'})`, marginBottom: '2%' }}>
+                    <p className="textSex">{props.question.text}</p>
+                </div>
             </div>
-            <div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Button sx={Styles.Sex}
                     variant="contained"
                     color={props.answer ? (props.answer.sex == 'male' ? 'secondary' : 'primary') : 'primary'}
