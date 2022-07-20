@@ -42,6 +42,7 @@ export function Standart(props: StandartProps) {
                             {/* {console.log(props.question.answers[jopa].commentSize)} */}
                             <div style={{ padding: `${(props.question.answers[jopa].commentPadding)}`, width: `${props.question.answers[jopa].commentSize}` }}>{answer ? comment : props.show && props.answer ? props.answer.comment : ""}</div>
                         </div>
+
                         <div style={{
                             backgroundImage: `url(/cloud/circle/${background})`,
                             position: 'absolute',

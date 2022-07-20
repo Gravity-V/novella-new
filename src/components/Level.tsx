@@ -74,6 +74,7 @@ export function Level(props: LevelProps) {
         case 'finish':/** */
             return <Finish answers={props.AnswerFinish} />
         default:
-            return <></>
+            return <>
+            </>
     }
 }

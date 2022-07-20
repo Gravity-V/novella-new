@@ -77,6 +77,7 @@ export const Styles = {
     paddingTop: '5px',
     paddingBottom: '5px'
   },
+  
   Sex: {
     fontSize: 24,
     paddingLeft: 10,

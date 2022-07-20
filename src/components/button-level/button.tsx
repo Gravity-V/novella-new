@@ -23,6 +23,7 @@ export function ButtonLevel(props: ButtonLevelProps) {
         (i) => {
           const disable = i > props.answers.length ? true : false;
 
+
           const color = props.answers[i] ? (props.answers[i].isCorrect ? 'success' : 'error') : 'primary';
 
           return <Button sx={Styles.Text} onClick={() => {

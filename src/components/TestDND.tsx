@@ -31,6 +31,7 @@ export function Dnd() {
         setItems(itemsNewOrder)
     }
 
+
     return (
         <>
             <DragDropContext onDragEnd={onDragEnd}>
@@ -52,7 +53,7 @@ export function Dnd() {
                                                 {...provider.dragHandleProps}
 
                                             >
-                                                {<Button onClick={()=> console.log(elem)}>{elem}</Button>}
+                                                {<Button onClick={() => console.log(elem)}>{elem}</Button>}
                                             </div>
                                         )
                                     }

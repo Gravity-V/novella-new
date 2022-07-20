@@ -3,6 +3,7 @@ export interface Answer {
     isCorrect: boolean
     // isBackground: string
 }
+
 export interface AnswerName extends Answer {
     name: string
 }

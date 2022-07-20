@@ -9,6 +9,7 @@ interface IntroductionProps {
     callbackSex?: (e: boolean) => void
 }
 
+
 export function Introduction(props: IntroductionProps) {
     const [condition, setCondition] = useState(0)
     const [background, setBackground] = useState<string>()

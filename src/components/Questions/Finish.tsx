@@ -5,6 +5,7 @@ import { Context } from "./context";
 import { Button } from "@mui/material";
 interface FinishProps {
     answers?: Answer[]
+
 }
 
 export function Finish(props: FinishProps) {
