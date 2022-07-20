@@ -1,6 +1,8 @@
 interface BaseAnswer{
     text: string
     comment?: string
+    commentSize?:string
+    commentPadding?:string
 }
 interface AnswerWithCorrect extends BaseAnswer{
     isCorrect: boolean
@@ -9,7 +11,7 @@ export interface QuestionBase{
     type: string 
 }
 export interface QuestionBaseExtend extends QuestionBase{
-    background: string
+    textSize: string
     text: string
 }
 export interface QuestionStandart extends QuestionBaseExtend{

@@ -1,37 +1,35 @@
 [  
     {
-        "type":"sex",
-        "text": "Ваш пол?",
-        "background": "/logo192.png"  
-    },
-    {
-        "type":"name",
-        "text":"Как вас зовут?",
-        "background": "/logo192.png"
-    },
-    {
         "type":"standart",
         "text":"Когда вы последний раз поставили для себя цель, которую так и не смогли выполнить, какие выводы вы сделали?",
-        "background": "/logo192.png",
+        "textSize": "292px",
         "answers": [
             {
                 "text":"Мне следовало лучше спланировать свои действия",
                 "comment":"Хороший показатель, причина направлена на себя",
+                "commentSize":"255px",
+                "commentPadding": "50px 28px",
                 "isCorrect": true
             },
             {
                 "text":"Всё шло достаточно хорошо, но пандемия и экономика внесли свои коррективы",
                 "comment":"Хм… Кандидат обвиняет внешние факторы - стоит насторожиться",
+                "commentSize":"295px",
+                "commentPadding": "67px 28px 77px 14px",
                 "isCorrect":false
             },
             {
                 "text":"Всё было бы хорошо, но начальник всячески противодействовал",
                 "comment":" Хм… Кандидат обвиняет внешние факторы - стоит насторожиться",
+                "commentSize":"295px",
+                "commentPadding": "67px 28px 77px 14px",
                 "isCorrect":false
             },
             {
                 "text":"Я должен был предвидеть, что мои решения вызовут проблемы",
                 "comment":"Хороший показатель, причина направлена на себя",
+                "commentSize":"255px",
+                "commentPadding": "0px 28px 0px 28px",
                 "isCorrect":true
 
             }
@@ -40,16 +38,20 @@
     {
         "type":"standart",
         "text":"Состоите ли вы в каких-нибудь профессиональных сообществах?",
-        "background": "/logo192.png",
+        "textSize": "292px",
         "answers": [
             {
                 "text":"Нет",
                 "comment":"Похоже, с коммуникабельностью у него проблемы. Посмотрим, как будет отвечать дальше",
+                "commentSize":"269px",
+                "commentPadding": "20px 50px 64px",
                 "isCorrect": false
             },
             {
                 "text":"Да",
                 "comment":"Это очень хорошо! Люди, которые занимаются общественной деятельностью, обладают развитыми коммуникативными навыками, это может нам пригодиться",
+                "commentSize":"393px",
+                "commentPadding": "90px 64px",
                 "isCorrect":true
             }
         ]
@@ -61,6 +63,7 @@
                 "type":"standart",
                 "background":"/logo192.png",
                 "text": "Вы общительный человек?",
+                "textSize": "310px",
                 "answers":[
                     {
                         "text":"Да",
@@ -75,22 +78,28 @@
             },
             {
                 "type":"standart",
-                "background":"/logo192.png",
                 "text": "Если бы вы могли выбирать, вы предпочли бы работать с командой или в одиночку?",
+                "textSize": "292px",
                 "answers":[
                     {
                         "text":"Работать в одиночку",
                         "comment":"Похоже, кто-то лукавит про общительность",
+                        "commentSize":"356px",
+                        "commentPadding": "90px 0px",
                         "isCorrect": false
                     },
                     {
                         "text":"Работать в коллективе",
-                        "isCorrect": true,
-                        "comment":"Похоже, что не врет, говоря, что является общительным/Похоже на правду. Общительный человек выберет работу в коллективе."
+                        "comment":"Общительный человек выберет работу в коллективе.",
+                        "commentSize":"265px",
+                        "commentPadding": "55px 64px 55px 45px",
+                        "isCorrect": true
                     },
                     {
                         "text":"Мне все равно с кем работать",
                         "comment":"Похоже на уход от честного ответа…",
+                        "commentSize":"300px",
+                        "commentPadding": "53px 0px 90px 0px",
                         "isCorrect": false
                     }
                 ]
@@ -121,7 +130,6 @@
             {
                 "type":"standart",
                 "text":"Почему вы ушли с прошлой работы?",
-                "background": "/logo192.png",
                 "answers": [
                     {
                         "text":"Уволился из-за конфликта",
@@ -150,7 +158,7 @@
     {
         "type":"order",
         "text":"Расскажите о себе. Расставьте ответы по порядку своего рассказа:",
-        "background": "",
+        "textSize": "292px",
         "answers": [
             {
                 "text":"Образование"         
@@ -170,7 +178,6 @@
     {
         "type":"standart",
         "text":"Почему вы хотите у нас работать?",
-        "background": "/logo192.png",
         "answers": [
             {
                 "text":"Зарплата меня очень привлекает и часы работы подходят под мой ритм жизни",
@@ -197,7 +204,6 @@
     {
         "type":"standart",
         "text":"В чем ваша уникальность?",
-        "background": "/logo192.png",
         "answers": [
             {
                 "text":"Меня любят и ценят коллеги, друзья и родственники. У меня есть множество увлечений и предметов для гордости",
@@ -224,36 +230,43 @@
     },
     {
         "type":"multi",
-        "background":"./components/images/background.jpg",
         "text": "Что вы делаете в свободное время?",
+        "textSize": "310px",
         "answers": [
             {
                 "text":"Читаю книги",
                 "comment": "!!!!!!!!!!!!Тогда вам не составит труда быстро ответить на вопрос о том, какая книга была прочитана последней",
+                "commentSize":"300px",
+                "commentPadding": "53px 0px 90px 0px",
                 "isCorrect": true
             },
             {
                 "text":"Смотрю сериалы",
-                "isCorrect": false,
-                 "comment":"Не очень продуктивное времяпровождение"
+                 "comment":"Не очень продуктивное времяпровождение",
+                 "commentSize":"300px",
+                 "commentPadding": "53px 0px 90px 0px",
+                 "isCorrect": false
 
             },
             {
                 "text":"Xобби",
                 "comment": "У эффективных сотрудников чаще всего есть хобби - это демонстрирует широкий кругозор, умение переключаться и отдыхать, а еще может соотноситься с ценностями корпоративный культуры компании",
+                "commentSize":"300px",
+                "commentPadding": "53px 0px 90px 0px",
                 "isCorrect": true
             },
             {
                 "text":"Компьютерные игры",
-                "isCorrect": false,
-                "comment": "Иногда игры полезны, но чаще являются пожирателем времени"
+                "comment": "Иногда игры полезны, но чаще являются пожирателем времени",
+                "commentSize":"300px",
+                "commentPadding": "53px 0px 90px 0px",
+                "isCorrect": false
             }
         ]
     },
     {
         "type":"standart",
         "text":"Какой уровень зарплаты вы рассматриваете?",
-        "background": "/logo192.png",
         "answers": [
             {
                 "text":"А сколько предлагаете? Я стою в два раза больше, ведь я – суперпрофи!",
@@ -280,7 +293,6 @@
     {
         "type":"standart",
         "text":"Кто может вас рекомендовать?",
-        "background": "/logo192.png",
         "answers": [
             {
                 "text":"Я не успел себя еще зарекомендовать",
@@ -306,7 +318,6 @@
     },
     {
         "type":"multi",
-        "background":"./components/images/background.jpg",
         "text": "Представьте, что собеседование задерживается. Что будете делать?",
         "answers": [
             {
@@ -334,7 +345,6 @@
     {
         "type":"standart",
         "text":"Как, по вашему мнению, стоит обращаться к интервьюеру?",
-        "background": "/logo192.png",
         "answers": [
             {
                 "text":"На ВЫ",
@@ -357,7 +367,6 @@
     },
     {
         "type":"multi",
-        "background":"./components/images/background.jpg",
         "text": "У вас звонит телефон!",
         "answers": [
             {
@@ -381,7 +390,6 @@
     },
     {
         "type":"multi",
-        "background":"./components/images/background.jpg",
         "text": "Какие темы нельзя затрагивать на собеседовании?",
         "answers": [
             {
@@ -404,7 +412,6 @@
     },
     {
         "type":"standart",
-        "background":"./components/images/background.jpg",
         "text": "Какие коммуникационные каналы оказывают влияние на собеседника?",
         "answers": [
             {
@@ -431,7 +438,6 @@
     },
     {
         "type":"multi",
-        "background":"./components/images/background.jpg",
         "text": "Каковы типичные ошибки кандидатов, как вы думаете?",
         "answers": [
             {
@@ -463,7 +469,6 @@
     },
     {
         "type":"multi",
-        "background":"./components/images/background.jpg",
         "text": "Каковы причины ухода с предыдущей работы?",
         "answers": [
             {
@@ -495,7 +500,6 @@
     },
     {
         "type":"multi",
-        "background":"./components/images/background.jpg",
         "text": "На этом наше собеседование подходит к концу. Может быть, у вас есть ко мне какие-нибудь вопросы?",
         "answers": [
             {
@@ -533,7 +537,6 @@
     {
         "type":"standart",
         "text":"Как поступите после собеседования?",
-        "background": "/logo192.png",
         "answers": [
             {
                 "text":"Все сделано. Жду результата",

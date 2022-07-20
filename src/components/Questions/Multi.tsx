@@ -61,9 +61,9 @@ export function Multi(props: MultiProps) {
     useEffect(() => {
         props.show && props.answer && setComment(props.answer.comment)
     })
-    return <>
-        <div className="standartposition" style={{ height: '10%' }}>
-            <div className="question" style={{ alignSelf: 'center', backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover", backgroundPosition: "center" }}>
+    return <div className="box">
+        <div style={{ height: '40%' }}>
+            {/* <div className="question" style={{ alignSelf: 'center', backgroundImage: `url(${background})` }}>
                 {!(answer || props.show) && props.question.text}
                 {
                     // (answer || props.show) && comment.map((com, i) => <Typography key={i}>{com}</Typography>)
@@ -78,14 +78,38 @@ export function Multi(props: MultiProps) {
                         </IconButton>
                     </Typography>
                 }
-            </div>
+            </div> */}
+
+
+            {(answer || props.show) ?
+                <Typography component={'span'}>
+                    <div className="comment" style={{ backgroundImage: `url(${background})`, flexDirection: 'row', alignItems: 'center' }}>
+                        {/* {console.log(props.question.answers[jopa].commentSize)} */}
+                        <IconButton onClick={() => { commentNember != 0 ? setCommentNember(commentNember - 1) : true }}>
+                            <ArrowBackIcon />
+                        </IconButton>
+                        <div style={{ padding: `${(commentNember == 0 ? '1px' : props.question.answers[commentNember - 1].commentPadding)}`, width: `${commentNember == 0 ? '300px' : props.question.answers[commentNember - 1].commentSize}` }}>
+                            {comment[commentNember]}
+                        </div>
+                        <IconButton onClick={() => { commentNember < comment.length - 1 ? setCommentNember(commentNember + 1) : true }}>
+                            <ArrowForwardIcon />
+                        </IconButton>
+                    </div>
+                </Typography> :
+                <Typography component={'span'}>
+                    <div className="question" style={{ padding: '10px', width: `${props.question.textSize}` }}>{props.question.text}</div>
+                </Typography>
+            }
+
+
         </div>
-        <div className="standartposition" style={{ height: '45%', justifyContent: 'end' }}>
-            <div className="Centers" >
-                <FormGroup style={{ alignContent: "center" }}>
+        <div style={{ height: '13%' }}> </div>
+        <div className="standartposition" style={{ height: '37%' }}>
+            <div className="Centers" style={{ overflow: 'auto' }}>
+                <FormGroup style={{ alignContent: "center", margin: '0px 5px' }}>
                     {props.question.answers.map(
                         (answer, i) => {
-                            return <div key={answer.text} style={{ backgroundColor: "rgba(0, 99, 204, 1)", paddingLeft: "1%", paddingRight: "1%", margin: 5, width: "97%" }}>
+                            return <div key={answer.text} style={{ backgroundColor: "rgba(0, 99, 204, 1)", paddingLeft: "1%", paddingRight: "1%", margin: '5px 0px', width: "97%" }}>
                                 <ThemeProvider theme={getTheme4(props.answer ? props.answer.isCorrect : answer.isCorrect, clic != undefined ? clic == i : false)}> {/* НЕ РАБОТАЕТ ИЗМЕНЕНИЕ ОТВЕТА ПО ЦВЕТУ*/}
                                     <FormControlLabel
                                         style={{ width: "100%" }}
@@ -107,59 +131,63 @@ export function Multi(props: MultiProps) {
                 </FormGroup>
             </div>
         </div>
-        {
-            answer === undefined && <Button
-                style={{ width: '200px', alignSelf: 'center', marginBottom: '3%' }}
-                disabled={props.show === undefined || props.show === false ? lock : props.show}
-                variant='contained'
-                onClick={() => {
+        <div className="standartposition" style={{ height: '9%', justifyContent: 'flex-start', marginTop: '1%' }}>
 
-                    setDisabled(true)
-                    setLock(true)
-                    let userAnswers: string[] = [];
-                    let comments: string[] = [];
-                    props.question.answers.map(
-                        (answer, i) => {
-                            check[i] && userAnswers.push(answer.text)
-                            // comments.map((_, a)=> {comments != undefined ? comments[a] == answer.comment ? check[i] && answer.comment !== undefined && comments.push(answer.comment) : "" : "EROR" })
-                            // check[i] && answer.comment !== undefined && comments.push(answer.comment)
-                            check[i] && answer.comment !== undefined && !comments.includes(answer.comment) && comments.push(answer.comment)
-                        }
-                    )
-                    // console.log(comments);
-                    // comments = doSmth(comments)/* */
-                    comments.unshift(TEXT(correct, check))
-                    setComment((old) => [...old, ...comments])
-                    const answer: AnswerMulti = { isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: userAnswers, comment: comments }
-                    context && (answer.isCorrect ? context.setBackground("/background/smile.png") : context.setBackground("/background/discontent.png"))//
-                    answer.isCorrect ? setBackground('/cloud/Green.png') : setBackground('/cloud/Red.png')
-                    comments.length <= 0 ? ((context && context.setBackground("/background/interested.png")), (props.callbackFinish && props.callbackFinish(answer))) : setAnswer(answer) //переделай
-                    // comments.length <= 0 ? props.callbackFinish && props.callbackFinish(answer) && setAnswer(undefined) : ''
-                }}
-            >
-                Подтверждаю
-            </Button>
-        }
-        {
-            answer && <Button
-                style={{ width: '160px', alignSelf: 'center', marginBottom: '3%' }}
-                variant='contained'
-                onClick={
-                    () => {
-                        setDisabled(false)
+            {
+                answer === undefined && <Button
+                    // style={{ width: '200px', alignSelf: 'center', marginBottom: '3%' }}
+                    disabled={props.show === undefined || props.show === false ? lock : props.show}
+                    variant='contained'
+                    onClick={() => {
+
+                        setDisabled(true)
                         setLock(true)
-                        setComment([])
-                        correct = []
-                        setCheck([])
-                        setBackground('/cloud/White.png')
-                        context && context.setBackground("/background/interested.png")
-                        props.callbackFinish && props.callbackFinish(answer)
-                        setAnswer(undefined)
+                        let userAnswers: string[] = [];
+                        let comments: string[] = [];
+                        props.question.answers.map(
+                            (answer, i) => {
+                                check[i] && userAnswers.push(answer.text)
+                                // comments.map((_, a)=> {comments != undefined ? comments[a] == answer.comment ? check[i] && answer.comment !== undefined && comments.push(answer.comment) : "" : "EROR" })
+                                // check[i] && answer.comment !== undefined && comments.push(answer.comment)
+                                check[i] && answer.comment !== undefined && !comments.includes(answer.comment) && comments.push(answer.comment)
+                            }
+                        )
+                        // console.log(comments);
+                        // comments = doSmth(comments)/* */
+                        comments.unshift(TEXT(correct, check))
+                        setComment((old) => [...old, ...comments])
+                        const answer: AnswerMulti = { isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: userAnswers, comment: comments }
+                        context && (answer.isCorrect ? context.setBackground('smile.png') : context.setBackground('discontent.png'))//
+                        answer.isCorrect ? setBackground('/cloud/Green.png') : setBackground('/cloud/Red.png')
+                        comments.length <= 0 ? ((context && context.setBackground(0)), (props.callbackFinish && props.callbackFinish(answer))) : setAnswer(answer) //переделай
+                        // comments.length <= 0 ? props.callbackFinish && props.callbackFinish(answer) && setAnswer(undefined) : ''
+                    }}
+                >
+                    Подтверждаю
+                </Button>
+            }
+            {
+                answer && <Button
+                    // style={{ width: '160px', alignSelf: 'center', marginBottom: '3%' }}
+                    variant='contained'
+                    onClick={
+                        () => {
+                            setDisabled(false)
+                            setLock(true)
+                            setComment([])
+                            correct = []
+                            setCheck([])
+                            setBackground('/cloud/White.png')
+                            context && context.setBackground('interested.png')
+                            props.callbackFinish && props.callbackFinish(answer)
+                            setAnswer(undefined)
+                        }
                     }
-                }
-            >
-                Далее
-            </Button>
-        }
-    </>
+                >
+                    Далее
+                </Button>
+            }
+        </div>
+
+    </div>
 }
