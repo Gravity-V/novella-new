@@ -10,7 +10,6 @@ interface AnswerWithCorrect extends BaseAnswer{
 export interface QuestionBase{
     type: string 
 }
-
 export interface QuestionBaseExtend extends QuestionBase{
     textSize: string
     text: string

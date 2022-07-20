@@ -31,7 +31,6 @@ export function Dnd() {
         setItems(itemsNewOrder)
     }
 
-
     return (
         <>
             <DragDropContext onDragEnd={onDragEnd}>

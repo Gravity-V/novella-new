@@ -64,7 +64,6 @@ export function Order(props: OrderProps) {
         return result;
     };
 
-
     const onDragEnd = (result: DropResult) => {
         if (!result.destination) {
             return;

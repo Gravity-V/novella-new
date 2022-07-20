@@ -81,7 +81,6 @@ export function Multi(props: MultiProps) {
             </div> */}
 
 
-
             {(answer || props.show) ?
                 <Typography component={'span'}>
                     <div className="comment" style={{ backgroundImage: `url(${background})`, flexDirection: 'row', alignItems: 'center' }}>

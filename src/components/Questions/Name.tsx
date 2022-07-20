@@ -11,7 +11,6 @@ interface NameProps {
     answer?: AnswerName
 }
 
-
 export function Name(props: NameProps) {
     // let name = ''
     const [name, setName] = useState('');

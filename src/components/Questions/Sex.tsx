@@ -14,7 +14,6 @@ interface SexProps {
     show?: boolean
 }
 
-
 export function Sex(props: SexProps) {
     return <>
         <div className='name'>

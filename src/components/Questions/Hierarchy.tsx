@@ -4,7 +4,6 @@ import { Level } from "../Level";
 import React from 'react';
 import { AnswerHierarchy } from "../AnswerType";
 
-
 interface HierarchyProps {
     question: QuestionHierarchy
     callbackFinish?: (answer: AnswerHierarchy) => void
