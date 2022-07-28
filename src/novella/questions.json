@@ -386,7 +386,7 @@
     {
         "type":"standart",
         "text":"Как, по вашему мнению, стоит обращаться к интервьюеру?",
-        "textSize": "100px",
+        "textSize": "280px",
         "answers": [
             {
                 "text":"На ВЫ",
@@ -399,8 +399,8 @@
             {
                 "text":"По имени, или по имени отчеству, как представится",
                 "comment":"Имя человека - самый сладостный и самый важный для него звук на любом языке.©Дейл Карнеги",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"341px",
+                "commentPadding": "90px 50px 130px 50px",
                 "isCorrect":true
             },
             {
