@@ -412,7 +412,7 @@
     {
         "type":"multi",
         "text": "У вас звонит телефон!",
-        "textSize": "100px",
+        "textSize": "256px",
         "answers": [
             {
                 "text":"*Отклоняю звонок и перевожу телефон в беззвучный режим",
@@ -425,8 +425,8 @@
             {
                 "text":"*Отклоняю звонок и возвращаюсь к беседе",
                 "comment": "Это банальная оплошность может стоить вам работы",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"221px",
+                "commentPadding": "80px 15px 120px 30px",
                 "isCorrect": false
             },
             {

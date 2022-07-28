@@ -89,7 +89,7 @@ export function Multi(props: MultiProps) {
                             <ArrowBackIcon />
                         </IconButton>
                         <div style={{ width: `${commentNember == 0 ? '161px' : props.question.answers[commentNember - 1].commentSize}` }}>
-                            {comment[commentNember]}
+                            {comment[commentNember]}{/*!!!!!!!!!не массив коментов а массив номеров коментариев. иначе размер облоков может не соответствовать коменту*/}
                         </div>
                         <IconButton onClick={() => { commentNember < comment.length - 1 ? setCommentNember(commentNember + 1) : true }}>
                             <ArrowForwardIcon />
@@ -213,6 +213,7 @@ export function Multi(props: MultiProps) {
                             correct = []
                             setCheck([])
                             setBackground('White.png')
+                            setCommentNember(0)
                             context && context.setBackground('interested.png')
                             props.callbackFinish && props.callbackFinish(answer)
                             setAnswer(undefined)
