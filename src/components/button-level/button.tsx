@@ -26,7 +26,7 @@ export function ButtonLevel(props: ButtonLevelProps) {
           const color = props.answers[i] ? (props.answers[i].isCorrect ? 'success' : 'error') : 'primary';
 
           return <Button sx={Styles.Text} onClick={() => {
-            console.log(props.answers[i])
+            //console.log(props.answers[i])
 
             if (props.answers[i] != undefined) {
               context && (props.answers[i].isCorrect ?

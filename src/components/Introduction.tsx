@@ -40,7 +40,8 @@ export function Introduction(props: IntroductionProps) {
 
                     <Button sx={Styles.First}
                         variant="contained"
-                        onClick={() => { props.callbackSex && props.callbackSex(false); setBackground("/backgroundMan/interested.png"); setCondition(condition + 1) }}
+                        // onClick={() => { props.callbackSex && props.callbackSex(false); setBackground("/backgroundMan/interested.png"); setCondition(condition + 1) }}
+                        onClick={() => { props.callbackSex && props.callbackSex(true); setBackground("/backgroundGirl/interested.png"); setCondition(condition + 1) }}
                     ><WomanIcon sx={{ color: 'white', fontSize: '50px', padding: '16px' }} /></Button>
                 </div>
             </div >

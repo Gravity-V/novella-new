@@ -19,11 +19,11 @@ export function Standart(props: StandartProps) {
     const [lock, setLock] = useState<boolean>(false)
     const [clic, setClic] = useState<number>()
     const context = useContext(Context)//
-    const [background, setBackground] = useState<string>(props.answer && props.answer.isCorrect ? 'Green.png' : 'Red.png');
-    const [jopa, setJopa] = useState<number>(props.answer ? props.answer.userNuberAnswers : -1)
-    console.log(answer, props.show, props.answer)
-    return <>
+    const [background, setBackground] = useState<string | undefined>();
 
+    const [jopa, setJopa] = useState<number>(props.answer ? props.answer.userNuberAnswers : -1)
+    console.log(background, typeof props.answer, props.show, typeof props.answer, props.answer && props.answer.isCorrect)
+    return <>
         <div className="box">
 
             <div style={{ height: '40%' }}>
@@ -38,7 +38,7 @@ export function Standart(props: StandartProps) {
                 {/* 1148 x 976 */}
                 {(answer || (props.show && (props.answer && props.answer.comment != ''))) ?
                     <Typography component={'span'}>
-                        <div className="comment" style={{ backgroundImage: `url(/cloud/${background})` }}>
+                        <div className="comment" style={{ backgroundImage: `url(/cloud/${props.answer ? (props.answer.isCorrect ? 'Green.png' : 'Red.png') : background})` }}>{/*если вставить props.answer.isCorrect ? 'Green.png' : 'Red.png') в момент обьявления то онм не сработает*/}
                             {/* {console.log(props.question.answers[jopa].commentSize)} */}
                             <div style={{ padding: `${(props.question.answers[jopa].commentPadding)}`, width: `${props.question.answers[jopa].commentSize}` }}>{answer ? comment : props.show && props.answer ? props.answer.comment : ""}</div>
                         </div>
@@ -46,10 +46,32 @@ export function Standart(props: StandartProps) {
                         <div style={{
                             backgroundImage: `url(/cloud/circle/${background})`,
                             position: 'absolute',
-                            top: '5%',
-                            right: '0%',
-                            width: '100px',
-                            height: '100px',
+                            top: '15%',
+                            right: '55%',
+                            width: '30px',
+                            height: '30px',
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center'
+                        }}></div>
+                        <div style={{
+                            backgroundImage: `url(/cloud/circle/${background})`,
+                            position: 'absolute',
+                            top: '11%',
+                            right: '58%',
+                            width: '40px',
+                            height: '40px',
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center'
+                        }}></div>
+                        <div style={{
+                            backgroundImage: `url(/cloud/circle/${background})`,
+                            position: 'absolute',
+                            top: '8%',
+                            right: '62%',
+                            width: '50px',
+                            height: '50px',
                             backgroundSize: 'contain',
                             backgroundRepeat: 'no-repeat',
                             backgroundPosition: 'center'

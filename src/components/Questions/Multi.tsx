@@ -56,7 +56,7 @@ export function Multi(props: MultiProps) {
     const [clic, setClic] = useState<number>()
     const context = useContext(Context)//
     const [commentNember, setCommentNember] = useState(0)
-    const [background, setBackground] = useState<string>(props.show ? (props.answer && props.answer.isCorrect ? '/cloud/Green.png' : '/cloud/Red.png') : '/cloud/White.png');
+    const [background, setBackground] = useState<string | undefined>();
     let correct: boolean[] = new Array(props.question.answers.length).fill(false)
     useEffect(() => {
         props.show && props.answer && setComment(props.answer.comment)
@@ -83,18 +83,53 @@ export function Multi(props: MultiProps) {
 
             {(answer || props.show) ?
                 <Typography component={'span'}>
-                    <div className="comment" style={{ backgroundImage: `url(${background})`, flexDirection: 'row', alignItems: 'center' }}>
+                    <div className="comment" style={{ padding: `${(commentNember == 0 ? '115px 0px 115px 0px' : props.question.answers[commentNember - 1].commentPadding)}`, backgroundImage: `url(/cloud/${props.answer ? (props.answer.isCorrect ? 'Green.png' : 'Red.png') : background})`, flexDirection: 'row', alignItems: 'center' }}>
                         {/* {console.log(props.question.answers[jopa].commentSize)} */}
                         <IconButton onClick={() => { commentNember != 0 ? setCommentNember(commentNember - 1) : true }}>
                             <ArrowBackIcon />
                         </IconButton>
-                        <div style={{ padding: `${(commentNember == 0 ? '1px' : props.question.answers[commentNember - 1].commentPadding)}`, width: `${commentNember == 0 ? '300px' : props.question.answers[commentNember - 1].commentSize}` }}>
+                        <div style={{ width: `${commentNember == 0 ? '161px' : props.question.answers[commentNember - 1].commentSize}` }}>
                             {comment[commentNember]}
                         </div>
                         <IconButton onClick={() => { commentNember < comment.length - 1 ? setCommentNember(commentNember + 1) : true }}>
                             <ArrowForwardIcon />
                         </IconButton>
                     </div>
+
+
+                    <div style={{
+                        backgroundImage: `url(/cloud/circle/${background})`,
+                        position: 'absolute',
+                        top: '15%',
+                        right: '55%',
+                        width: '30px',
+                        height: '30px',
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center'
+                    }}></div>
+                    <div style={{
+                        backgroundImage: `url(/cloud/circle/${background})`,
+                        position: 'absolute',
+                        top: '11%',
+                        right: '58%',
+                        width: '40px',
+                        height: '40px',
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center'
+                    }}></div>
+                    <div style={{
+                        backgroundImage: `url(/cloud/circle/${background})`,
+                        position: 'absolute',
+                        top: '8%',
+                        right: '62%',
+                        width: '50px',
+                        height: '50px',
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center'
+                    }}></div>
                 </Typography> :
                 <Typography component={'span'}>
                     <div className="question" style={{ padding: '10px', width: `${props.question.textSize}` }}>{props.question.text}</div>
@@ -158,7 +193,7 @@ export function Multi(props: MultiProps) {
                         setComment((old) => [...old, ...comments])
                         const answer: AnswerMulti = { isCorrect: JSON.stringify(correct) == JSON.stringify(check), type: "multi", userAnswers: userAnswers, comment: comments }
                         context && (answer.isCorrect ? context.setBackground('smile.png') : context.setBackground('discontent.png'))//
-                        answer.isCorrect ? setBackground('/cloud/Green.png') : setBackground('/cloud/Red.png')
+                        answer.isCorrect ? setBackground('Green.png') : setBackground('Red.png')
                         comments.length <= 0 ? ((context && context.setBackground(0)), (props.callbackFinish && props.callbackFinish(answer))) : setAnswer(answer) //переделай
                         // comments.length <= 0 ? props.callbackFinish && props.callbackFinish(answer) && setAnswer(undefined) : ''
                     }}
@@ -177,7 +212,7 @@ export function Multi(props: MultiProps) {
                             setComment([])
                             correct = []
                             setCheck([])
-                            setBackground('/cloud/White.png')
+                            setBackground('White.png')
                             context && context.setBackground('interested.png')
                             props.callbackFinish && props.callbackFinish(answer)
                             setAnswer(undefined)
