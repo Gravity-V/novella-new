@@ -281,34 +281,34 @@
     {
         "type":"standart",
         "text":"Какой уровень зарплаты вы рассматриваете?",
-        "textSize": "100px",
+        "textSize": "286px",
         "answers": [
             {
                 "text":"А сколько предлагаете? Я стою в два раза больше, ведь я – суперпрофи!",
                 "comment":"Какие завышенные ожидания…",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"226px",
+                "commentPadding": "75px 40px 75px 40px",
                 "isCorrect":false
             },
             {
                 "text":"А сколько вы платите? О, это мне подходит, на это и рассчитываю",
                 "comment":"Важно помнить: какую сумму вы озвучите на собеседовании, такую вы и получите (плюс-минус)",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"370px",
+                "commentPadding": "100px 40px 120px 40px",
                 "isCorrect":false
             },
             {
                 "text":"Так… рассчитываю на примерно такой диапазон (* мысленно прибавлю ~30% от последнего среднемесячного заработка)",
                 "comment":"Грамотный подход!",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"222px",
+                "commentPadding": "108px 20px 118px 20px",
                 "isCorrect":true
             },
             {
                 "text":"Примерно в диапазоне $$-$$ (отниму ~30% от последнего среднемесячного заработка, покажу работодателю, что цель не зарплата, а работа в компании",
                 "comment":"Хм… Явно обесценивает себя",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"218px",
+                "commentPadding": "65px 20px 108px 20px",
                 "isCorrect":false
             }   
         ]
