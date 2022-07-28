@@ -1,0 +1,12 @@
+npm init -y    генерация проекта node.js
+
+менняем строчку  "test": "echo \"Error: no test specified\" && exit 1" на "start": "node index.js"
+
+создаем файл index.js
+
+
+
+
+для запуска сервера в терминале пишем 'node index'
+
+для остановки сервера в терминале прожимаем ctrl + c
