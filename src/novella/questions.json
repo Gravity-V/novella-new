@@ -496,41 +496,41 @@
     {
         "type":"multi",
         "text": "Каковы типичные ошибки кандидатов, как вы думаете?",
-        "textSize": "100px",
+        "textSize": "235px",
         "answers": [
             {
                 "text":"Периодически трогать галстук или украшения",
                 "comment": "Этот жест может быть истолкован следующим образом: ваше внимание не сосредоточенно или вам просто не свойственно носить галстук/украшения.",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"434px",
+                "commentPadding": "115px 0px 150px 0px",
                 "isCorrect": true
             },
             {
                 "text":"Расслабленная поза на стуле с руками в карманах или на поясе.",
                 "comment": "Эта поза может заклеймить вас как самоуверенного и агрессивного человека.",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"324px",
+                "commentPadding": "110px 0px 150px 0px",
                 "isCorrect": true
             },
             {
                 "text":"Оттягивание воротника от шеи",
                 "comment": "Можно предположить, что вы напряжены или говорите неправду. То же самое касается и прикосновений к шее во время, до или после вашего ответа.",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"443px",
+                "commentPadding": "115px 0px 150px 0px",
                 "isCorrect": true
             },
             {
                 "text":"Перемещение руки в области лба, когда приходится отвечать на вопросы, которые вызывают затруднения.",
-                "comment": "Это общая бессознательная реакция человека на стресс. На подсознательном уровне человек кладёт руку на лоб, когда размышляет, например, как реагировать на сложные вопросы: <<Почему вы не зарабатываете больше в вашем возрасте?>> или <<Какие главные достижения в вашей жизни?>>. Эта привычка так укоренилась, что контролировать её чрезвычайно трудно.",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "comment": "Это общая бессознательная реакция человека на стресс. Эта привычка так укоренилась, что контролировать её чрезвычайно трудно.",
+                "commentSize":"362px",
+                "commentPadding": "140px 0px 150px 0px",
                 "isCorrect": true
             },
             {
                 "text":"Сглаживание невидимых пушинок на костюме.",
                 "comment": "Этот жест со стороны выглядит как нервный тик. Если даже у вас появились какие-то проблемы с костюмом, лучше проигнорировать это и не привлекать внимания ещё больше.",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"410px",
+                "commentPadding": "125px 0px 140px 66px",
                 "isCorrect": true
             } 
         ]
@@ -538,41 +538,41 @@
     {
         "type":"multi",
         "text": "Каковы причины ухода с предыдущей работы?",
-        "textSize": "100px",
+        "textSize": "268px",
         "answers": [
             {
                 "text":"Добираться до работы было необоснованно долго",
                 "comment": "Такая причина ухода имеет место быть",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"239px",
+                "commentPadding": "90px 0px 110px 0px",
                 "isCorrect": true
             },
             {
                 "text":"Не было возможностей для профессионального роста на текущей работе",
                 "comment": "Такая причина ухода имеет место быть",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"239px",
+                "commentPadding": "90px 0px 110px 0px",
                 "isCorrect": true
             },
             {
                 "text":"Семейные обстоятельства",
                 "comment": "Такая причина ухода имеет место быть",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"239px",
+                "commentPadding": "90px 0px 110px 0px",
                 "isCorrect": true
             },
             {
                 "text":"Хотелось работать с профессионалами в крупной компании",
                 "comment": "Такая причина ухода имеет место быть",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"239px",
+                "commentPadding": "90px 0px 110px 0px",
                 "isCorrect": true
             },
             {
                 "text":"Сокращение",
                 "comment": "Такая причина ухода имеет место быть",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"239px",
+                "commentPadding": "90px 0px 110px 0px",
                 "isCorrect": true
             }
         ]
