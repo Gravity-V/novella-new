@@ -461,34 +461,34 @@
     {
         "type":"standart",
         "text": "Какие коммуникационные каналы оказывают влияние на собеседника?",
-        "textSize": "100px",
+        "textSize": "306px",
         "answers": [
             {
                 "text":"Что мы говорим. Смысл: набор слов и предложений",
                 "comment": "И это правильный ответ - 7% влияния на собеседника",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"321px",
+                "commentPadding": "120px 20px 153px 20px",
                 "isCorrect": true
             },
             {
                 "text":"Как мы говорим. Звук: уверенность, тембр, интонация, акцент, ударение.",
                 "comment": "И это правильный ответ - 38% влияния на собеседника",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"292px",
+                "commentPadding": "100px 20px 80px 20px",
                 "isCorrect": true
             },
             {
                 "text":"Что мы при этом делаем. Язык тела: взгляд, движение тела, жесты, мимика, поведение.",
                 "comment": "И это правильный ответ - 55% влияния на собеседника",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"292px",
+                "commentPadding": "100px 20px 80px 20px",
                 "isCorrect": true
             },
             {
                 "text":"Самое важное это внешний вид и при этом улыбаться",
                 "comment": "Этого, к сожалению, недостаточно",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"233px",
+                "commentPadding": "90px 20px 90px 20px",
                 "isCorrect": false
             }
         ]
