@@ -1,11 +1,9 @@
-.box {
-    
+.box {    
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-  
 }
 
 .answer {
@@ -23,7 +21,7 @@
 .question {
     /* background-color: rgb(141, 214, 240, 0.9); */
     color: rgb(0, 0, 0);
-    font-size: 24px;
+    font-size: 22px;
     position: absolute;
     /* bottom: 46%; */
     top: 20%;
@@ -42,24 +40,23 @@
 }
 
 .comment{
-      /* background-color: rgb(141, 214, 240, 0.9); */
-      position: absolute;
-      top: 5%;
-      right:63%;
-      color: rgb(0, 0, 0);
-      font-size: 24px;
-     
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      display: flex;
-      /* padding: 10px 15px; */
-      /* margin-left: -40px; */
-      /* border-radius: 10px; */
-      flex-direction: column;
-       justify-content: center; 
-      /* margin-top: 16%; */
-      text-align: center;
+    /* background-color: rgb(141, 214, 240, 0.9); */
+    position: absolute;
+    top: 5%;
+    right: 63%;
+    color: rgb(0, 0, 0);
+    font-size: 22px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* display: flex; */
+    padding: 74px 15px;
+    /* margin-left: -40px; */
+    /* border-radius: 10px; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* margin-top: 16%; */
+    text-align: center;
 }
 
 .Standart{
@@ -73,19 +70,16 @@
 }
 
 .text {
-    align-self: center;
+    text-align: center;
     font-size: 30px;
     padding: 15px;
     min-width: 60%;
-   max-width: 80%;
+    max-width: 80%;
     background-color: rgba(141, 214, 240, 0.7);
     border-radius: 20px;
 }
 
-
-
-.Centers {
-   
+.Centers {   
     background-color: rgba(0, 0, 0, 0.2);
     color: white;
     width: 80%;
