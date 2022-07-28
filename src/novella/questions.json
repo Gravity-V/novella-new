@@ -316,34 +316,34 @@
     {
         "type":"standart",
         "text":"Кто может вас рекомендовать?",
-        "textSize": "100px",
+        "textSize": "190px",
         "answers": [
             {
                 "text":"Я не успел себя еще зарекомендовать",
                 "comment":"Странно, даже если выпускник вуза, то тоже можно попросить рекомендацию в деканате, у куратора",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"386px",
+                "commentPadding": "113px 40px 127px 40px",
                 "isCorrect":false
             },
             {
                 "text":"У меня есть только устные рекомендации",
                 "comment":"Надо было позаботиться об этом",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"289px",
+                "commentPadding": "100px 40px 100px 40px",
                 "isCorrect":false
             },
             {
                 "text":"Рекомендации для меня — это пустой звон, я доказываю своей работой, а не прикрываюсь отзывами",
                 "comment":"Какой самоуверенный, могут быть проблемы от него",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"264px",
+                "commentPadding": "85px 40px 85px 40px",
                 "isCorrect":false
             },
             {
                 "text":"Пожалуйста, вот рекомендательное письмо от одного из бывших работодателей, характеристика из университета и контакты человека, который может за меня поручиться. ",
                 "comment":"Грамотный подход, молодец, подготовился",
-                "commentSize":"100px",
-                "commentPadding": "10px 10px 10px 10px",
+                "commentSize":"270px",
+                "commentPadding": "70px 20px 110px 20px",
                 "isCorrect":true
             }   
         ]
